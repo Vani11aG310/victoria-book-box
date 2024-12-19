@@ -59,7 +59,7 @@ For the purpose of our final project, we will assume contributers will add books
 
 ### ERD
 - [Draw IO](https://app.diagrams.net/)
-- [DB Diagram](https://dbdiagram.io/home/)
+- ~~[DB Diagram](https://dbdiagram.io/home/)~~
 
 ### API Testing
 - [Postman](https://www.postman.com/)
