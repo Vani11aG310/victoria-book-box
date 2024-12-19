@@ -7,7 +7,9 @@ Victoria Book Box is "Mobile-friendly" website to track locations of book boxes 
 Book Lovers who want access to free local book boxes to exchange their used books.
 
 ## Assumptions
-People can add or remove books without going through the inventory system. This may mean our inventory counts may be inaccurate. 
+People can add or remove books without going through the inventory system. This may mean our inventory counts may be inaccurate.
+
+For the purpose of our final project, we will assume contributers will add books to the system when they are added to the box and consumers will remove the book from the system when they are removed from the box. 
 
 ## Team Members
 - Angelo Villanueva
