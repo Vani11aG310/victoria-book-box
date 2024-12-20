@@ -1,7 +1,7 @@
 # Project Planning
 
 ## Victoria Book Box
-Victoria Book Box is "Mobile-friendly" website to track locations of book boxes and their current inventory. Allows users to input data about  book they are adding to a box. Users can search boxes for books they may be interested in. Users can receive notification when a book they are interested is added to the collection.
+Victoria Book Box is a mobile-friendly website to track locations of book boxes and their current inventory. Allows users to input data about books they are adding to a box. Users can search boxes for books they may be interested in. Users can receive a notification when a book they are interested is added to the collection.
 
 ## Target Audience
 Book Lovers who want access to free local book boxes to exchange their used books.
@@ -20,23 +20,19 @@ For the purpose of our final project, we will assume contributers will add books
 - [User Stories](./user-stories.md)
 
 # Wireframes
-- [Balsamiq](https://balsamiq.cloud/)
-- [Figma](https://www.figma.com/)
+- [Balsamiq](https://balsamiq.cloud/s7utcor/pi8z7sa)
 
 # ERD 
 - [Draw IO](https://app.diagrams.net/)
-- [DB Diagram](https://dbdiagram.io/home/)
 
 # Tech Stack
-## React
+- **Front End:** React
+- **Back End:** Ruby on Rails
+- **Database:** Postgresql
+
+### Decisions to Make
 - JavaScript vs TypeScript
 - React: CRA vs Vite vs Next.js
-
-## CSS
-
-## HTML
-
-## Dependencies
 - Bootstrap vs Tailwind CSS vs Material UI
 - Fetch vs Axios vs React Query
 - React Router
@@ -59,25 +55,7 @@ For the purpose of our final project, we will assume contributers will add books
 
 ### ERD
 - [Draw IO](https://app.diagrams.net/)
-- ~~[DB Diagram](https://dbdiagram.io/home/)~~
+- [DB Diagram](https://dbdiagram.io/home/)
 
 ### API Testing
 - [Postman](https://www.postman.com/)
-
-
-## Fun Stuff we would get to do
-- inventory management (books)
-  - inventory reconcilation
-  - mass upload for new book boxes
-- box management (locations)
-- user management (users)
-- push notifications
-- external APIs
-- light/dark mode
-
-### Lower Priority
-- Another crack at maps
-- optical character recognition to do cover matching to book lookup
-
-
-[def]: ../user-stories.md
