@@ -31,12 +31,12 @@ For the purpose of our final project, we will assume contributers will add books
 - **Database:** Postgresql
 
 ### Decisions to Make
-- JavaScript vs TypeScript
-- React: CRA vs Vite vs Next.js
-- Bootstrap vs Tailwind CSS vs Material UI
-- Fetch vs Axios vs React Query
-- React Router
-- Formik
+- JavaScript~~vs TypeScript~~
+- React: CRA ~~vs Vite vs Next.js~~
+- ~~Bootstrap vs~~ Tailwind CSS vs Material UI
+- ~~Fetch vs~~ Axios ~~vs React Query~~
+- ~~React Router~~
+- ~~Formik~~
 
 ## Other Software
 

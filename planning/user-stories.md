@@ -11,7 +11,7 @@
 - **Book Box:** A small library (tens) of books in a physical location.
 
 ## User
-1. As a user, I can login to the application with my email and password.
+1. *As a user, I can login to the application with my email and password.*
 
 ## Consumer
 1. As as Consumer, I can see what books are in the neighbourhood so I can determine if there is a book I am interested in reading.
