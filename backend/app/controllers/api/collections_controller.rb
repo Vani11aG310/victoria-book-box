@@ -1,4 +1,4 @@
-class CollectionsController < ApplicationController
+class Api::CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show update destroy ]
 
   # GET /collections
