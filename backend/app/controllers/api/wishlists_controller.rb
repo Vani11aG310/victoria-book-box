@@ -3,14 +3,14 @@ class Api::WishlistsController < ApplicationController
 
   # GET /wishlists
   def index
-    @wishlists = Wishlist.all
+    @wishlists = Wishlist.includes(:user, :book).all
 
-    render json: @wishlists
+    render json: @wishlists.as_json(include: { user: {}, book: {} })
   end
 
   # GET /wishlists/1
   def show
-    render json: @wishlist
+    render json: @wishlist.as_json(include: { user: {}, book: {} })
   end
 
   # POST /wishlists
