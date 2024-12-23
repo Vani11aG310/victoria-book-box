@@ -7,8 +7,8 @@ class Api::BooksController < ApplicationController
 
     @books = @books.map do |book|
       book.as_json.merge(
-        cover_full_url: "https://covers.openlibrary.org/b/olid/#{book.cover_url}-L.jpg",
-        open_library_key_url: "https://openlibrary.org/works/#{book.open_library_key}"
+        cover_url: "https://covers.openlibrary.org/b/olid/#{book.open_library_cover_key}-L.jpg",
+        open_library_url: "https://openlibrary.org/#{book.open_library_key}"
         )
     end
 
@@ -18,8 +18,8 @@ class Api::BooksController < ApplicationController
   # GET /books/1
   def show
     render json: @book.as_json.merge(
-      cover_full_url: "https://covers.openlibrary.org/b/olid/#{@book.cover_url}-L.jpg",
-      open_library_key_url: "https://openlibrary.org/works/#{@book.open_library_key}"
+      cover_url: "https://covers.openlibrary.org/b/olid/#{@book.open_library_cover_key}-L.jpg",
+      open_library_url: "https://openlibrary.org/#{@book.open_library_key}"
     )
   end
 
