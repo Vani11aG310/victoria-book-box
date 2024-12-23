@@ -3,14 +3,14 @@ class Api::CollectionsController < ApplicationController
 
   # GET /collections
   def index
-    @collections = Collection.all
+    @collections = Collection.includes(:book, :book_box).all
 
-    render json: @collections
+    render json: @collections.as_json(include: { book: {}, book_box: {} })
   end
 
   # GET /collections/1
   def show
-    render json: @collection
+    render json: @collection.as_json(include: { book: {}, book_box: {} })
   end
 
   # POST /collections

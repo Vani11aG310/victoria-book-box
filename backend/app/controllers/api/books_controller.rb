@@ -5,12 +5,22 @@ class Api::BooksController < ApplicationController
   def index
     @books = Book.all
 
+    @books = @books.map do |book|
+      book.as_json.merge(
+        cover_full_url: "https://covers.openlibrary.org/b/olid/#{book.cover_url}-L.jpg",
+        open_library_key_url: "https://openlibrary.org/works/#{book.open_library_key}"
+        )
+    end
+
     render json: @books
   end
 
   # GET /books/1
   def show
-    render json: @book
+    render json: @book.as_json.merge(
+      cover_full_url: "https://covers.openlibrary.org/b/olid/#{@book.cover_url}-L.jpg",
+      open_library_key_url: "https://openlibrary.org/works/#{@book.open_library_key}"
+    )
   end
 
   # POST /books
