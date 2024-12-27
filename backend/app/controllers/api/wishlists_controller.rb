@@ -13,6 +13,13 @@ class Api::WishlistsController < ApplicationController
     render json: @wishlist.as_json(include: { user: {}, book: {} })
   end
 
+  # GET /wishlists/user_id/:user_id
+  def by_user
+    @wishlists = Wishlist.includes(:user, :book).where(user_id: params[:user_id])
+
+    render json: @wishlists.as_json(include: { user: {}, book: {} })
+  end
+
   # POST /wishlists
   def create
     @wishlist = Wishlist.new(wishlist_params)
@@ -49,3 +56,4 @@ class Api::WishlistsController < ApplicationController
       params.fetch(:wishlist, {})
     end
 end
+ 
