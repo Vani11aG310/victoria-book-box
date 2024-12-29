@@ -13,6 +13,25 @@ class Api::WishlistsController < ApplicationController
     render json: @wishlist.as_json(include: { user: {}, book: {} })
   end
 
+  # GET /wishlists/user_id/:user_id
+  def by_user
+    @wishlists = Wishlist.joins(:book).includes(:user, :book).where(user_id: params[:user_id]).order("books.title asc")
+  
+    wishlists_with_book_details = @wishlists.map do |wishlist|
+      wishlist.as_json(include: { 
+        user: {}, 
+        book: {} 
+      }).merge(
+        book: wishlist.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{wishlist.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{wishlist.book.open_library_key}"
+        )
+      )
+    end
+  
+    render json: wishlists_with_book_details
+  end
+
   # POST /wishlists
   def create
     @wishlist = Wishlist.new(wishlist_params)
@@ -49,3 +68,4 @@ class Api::WishlistsController < ApplicationController
       params.fetch(:wishlist, {})
     end
 end
+ 
