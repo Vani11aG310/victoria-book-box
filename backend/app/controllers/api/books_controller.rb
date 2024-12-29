@@ -3,7 +3,7 @@ class Api::BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
+    @books = Book.all.order(title: :asc)
 
     @books = @books.map do |book|
       book.as_json.merge(

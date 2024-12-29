@@ -1,29 +1,16 @@
-import './App.css';
+import "./App.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import MyWishlist from "./routes/MyWishlistRoute";
 
 function App() {
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/wishlists/user_id/3")
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        if (err.response) {
-          console.error("Response error:", err.response);
-        } else if (err.request) {
-          console.error("Request error:", err.request);
-        } else {
-          console.error("General error:", err.message);
-        }
-      })
-      ;
-  }, []);
+  const [userId, setUserId] = useState(process.env.REACT_APP_USER_ID);
 
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Victoria Book Box</h1>
+        <MyWishlist userId={userId}/>
       </header>
     </div>
   );
