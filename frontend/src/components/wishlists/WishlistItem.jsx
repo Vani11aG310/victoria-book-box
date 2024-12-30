@@ -1,4 +1,4 @@
-import "../styles/WishlistItem.scss";
+import "../../styles/wishlists/WishlistItem.scss";
 
 const WishlistItem = (props) => {
   const { wishlistItem } = props;

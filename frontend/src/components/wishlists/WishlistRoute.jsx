@@ -1,7 +1,7 @@
-import "../styles/WishlistRoute.scss";
+import "../../styles/wishlists/WishlistRoute.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Wishlist from "../components/Wishlist";
+import Wishlist from "./Wishlist";
 
 const WishlistRoute = (props) => {
   const [wishlistData, setwishlistData] = useState([]);
