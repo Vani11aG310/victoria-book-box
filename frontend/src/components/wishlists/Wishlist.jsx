@@ -1,9 +1,9 @@
-import "../styles/MyWishlistRoute.scss";
+import "../../styles/wishlists/Wishlist.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Wishlist from "../components/Wishlist";
+import WishlistItem from "./WishlistItem";
 
-const MyWishlistRoute = (props) => {
+const Wishlist = (props) => {
   const [wishlistData, setwishlistData] = useState([]);
   const { userId } = props;
 
@@ -22,13 +22,16 @@ const MyWishlistRoute = (props) => {
         }
       });
     }, []);
-    
-  return (
+
+    return (
     <div>
-      <h2>My Wishlist</h2>
-        <Wishlist wishlistData={wishlistData} />
+      <ul className="wishlist">
+        {Array.isArray(wishlistData) && wishlistData.map((wishlistItem) => {
+          return <WishlistItem key={wishlistItem.id} wishlistItem={wishlistItem} />;
+        })}
+      </ul>
     </div>
   );
 }
 
-export default MyWishlistRoute;
+export default Wishlist;

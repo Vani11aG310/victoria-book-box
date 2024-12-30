@@ -1,21 +1,20 @@
 .wishlist__item {
-  margin: 12px;
-  padding: 16px;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-width: 0.5px;
   border-color: lightgray;
   border-style: solid;
   border-radius: 8px;
   width: 100%;
   background-color: lightgray;
-  color: #282c34;
+  color: black;
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 .wishlist__book-cover {
-  width: 100px;
-  height: auto;
+  height: 150px;
+  width: auto;
   margin-right: 1rem;
   border-radius: 8px;
 }

@@ -95,6 +95,9 @@ puts "Wishlists"
 Wishlist.find_or_create_by!(user: user3, book: book1)
 Wishlist.find_or_create_by!(user: user3, book: book2)
 Wishlist.find_or_create_by!(user: user3, book: book3)
+Wishlist.find_or_create_by!(user: user3, book: book4)
+Wishlist.find_or_create_by!(user: user3, book: book5)
+Wishlist.find_or_create_by!(user: user3, book: book6)
 
 
 puts "DONE!"
