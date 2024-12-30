@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useEffect, useState } from "react";
-import MyWishlist from "./routes/MyWishlistRoute";
+import Wishlist from "./routes/WishlistRoute";
 
 function App() {
   const [userId, setUserId] = useState(process.env.REACT_APP_USER_ID);
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Victoria Book Box</h1>
-        <MyWishlist userId={userId}/>
+        <Wishlist userId={userId}/>
       </header>
     </div>
   );

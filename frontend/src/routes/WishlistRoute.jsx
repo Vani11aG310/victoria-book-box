@@ -1,9 +1,9 @@
-import "../styles/MyWishlistRoute.scss";
+import "../styles/WishlistRoute.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Wishlist from "../components/Wishlist";
 
-const MyWishlistRoute = (props) => {
+const WishlistRoute = (props) => {
   const [wishlistData, setwishlistData] = useState([]);
   const { userId } = props;
 
@@ -31,4 +31,4 @@ const MyWishlistRoute = (props) => {
   );
 }
 
-export default MyWishlistRoute;
+export default WishlistRoute;
