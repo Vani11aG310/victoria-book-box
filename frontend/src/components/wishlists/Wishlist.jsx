@@ -25,7 +25,6 @@ const Wishlist = (props) => {
 
     return (
     <div>
-      <h4>My Wishlist</h4>
       <ul className="wishlist">
         {Array.isArray(wishlistData) && wishlistData.map((wishlistItem) => {
           return <WishlistItem key={wishlistItem.id} wishlistItem={wishlistItem} />;
