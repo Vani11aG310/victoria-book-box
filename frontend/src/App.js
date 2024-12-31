@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from "react";
 import "./App.scss";
-import { useEffect, useState } from "react";
 import Header from "./components/navigation/Header";
 import Footer from "./components/navigation/Footer";
 import BookList from "./components/books/BookList";
