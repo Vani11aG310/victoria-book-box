@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from "react";
 import "./App.scss";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/navigation/Header";
 import Footer from "./components/navigation/Footer";
 import BookList from "./components/books/BookList";
@@ -11,31 +10,52 @@ import BookBoxCreate from "./components/book-boxes/BookBoxCreate";
 import BookBox from "./components/book-boxes/BookBox";
 import Wishlist from "./components/wishlists/Wishlist";
 import WishlistSearch from "./components/wishlists/WishlistSearch";
+import StateContext from "./context/StateContext";
+import DispatchContext from "./context/DispatchContext";
+import useApplicationData from './hooks/useApplicationData';
+import useWishlistData from './hooks/useWishlistData';
+import useUserData from './hooks/useUserData';
+
 
 function App() {
-  const [userId, setUserId] = useState(process.env.REACT_APP_USER_ID);
+  // Custom Hook to manage the Application's State.
+  const { state, dispatch } = useApplicationData();
+  
+  // Custom Hook to set the User Data.
+  // Assume for this project that the User ID is coming from an environment variable.
+  const userId = Number(process.env.REACT_APP_USER_ID)
+  useUserData(userId, dispatch);
+  
+  // Custom Hook to fetch the Wishlist Data for the User.
+  useWishlistData(userId, dispatch);
 
+
+  const pageTitle = "Page Title goes here";
 
   return (
     <div className="App">
       <Router> 
-        <Header pageTitle={"Page Title Goes Here"}/>
-        <div className="main-content">
-          <Routes>
-            <Route path="/" element={<BookList />} />          
-            <Route path="/books" element={<BookList />} />          
-            <Route path="/books/search" element={<BookSearch/>} />          
-            <Route path="/books/:id" element={<Book />} />    
+        <DispatchContext.Provider value={dispatch}>
+          <StateContext.Provider value={state}>
+            <Header pageTitle={pageTitle}/>
+            <div className="main-content">
+              <Routes>
+                <Route path="/" element={<BookList />} />          
+                <Route path="/books" element={<BookList />} />          
+                <Route path="/books/search" element={<BookSearch />} />          
+                <Route path="/books/:id" element={<Book />} />    
 
-            <Route path="/book-boxes" element={<BookBoxList />} />          
-            <Route path="/book-boxes/create" element={<BookBoxCreate />} />          
-            <Route path="/book-boxes/:id" element={<BookBox />} />          
-          
-            <Route path="/wishlist" element={<Wishlist userId={userId} />} />          
-            <Route path="/wishlist/search" element={<WishlistSearch />} />          
-          </Routes>
-        </div>
-        <Footer />
+                <Route path="/book-boxes" element={<BookBoxList />} />          
+                <Route path="/book-boxes/create" element={<BookBoxCreate />} />          
+                <Route path="/book-boxes/:id" element={<BookBox />} />          
+              
+                <Route path="/wishlist" element={<Wishlist />} />          
+                <Route path="/wishlist/search" element={<WishlistSearch />} />          
+              </Routes>
+            </div>
+            <Footer />
+            </StateContext.Provider>
+          </DispatchContext.Provider>
       </Router>
     </div>
   );

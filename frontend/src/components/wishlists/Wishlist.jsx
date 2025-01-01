@@ -1,12 +1,10 @@
 import "../../styles/wishlists/Wishlist.scss";
 import WishlistItem from "./WishlistItem";
-import useWishlistData from "../../hooks/useWishlistData";
+import { useContext } from "react";
+import StateContext from "../../context/StateContext";
 
-const Wishlist = (props) => {
-  const { userId } = props;
-  
-  const { state, dispatch } = useWishlistData(userId);
-  console.log("***STATE***", state);
+const Wishlist = () => {
+  const state = useContext(StateContext);
   const wishlistData = [...state.wishlistData];
 
   return (

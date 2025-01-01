@@ -1,22 +1,22 @@
-import { useEffect, useReducer } from "react";
-import dataReducer, { ACTIONS } from '../reducers/dataReducer';
+import { useEffect } from "react";
 import axios from "axios";
+import { ACTIONS } from "../reducers/dataReducer";
 
-const useWishlistData = (userId) => {
-  const [state, dispatch] = useReducer(dataReducer, {
-    wishlistData: [],
-    loading: true,
-  });
+const useWishlistData = (userId, dispatch) => {
+  let payload = [];
+  let error = null;
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/wishlists/user_id/${userId}`)
       .then((res) => {
+        payload = res.data;
         dispatch({
           type: ACTIONS.SET_WISHLIST,
-          payload: res.data,
+          payload,
         });
       })
       .catch((err) => {
+        error = err;
         if (err.response) {
           console.error("Response error:", err.response);
         } else if (err.request) {
@@ -27,7 +27,10 @@ const useWishlistData = (userId) => {
       });
     }, []);
 
-  return {state, dispatch};
+  return {
+    payload,
+    error,
+  };
 };
 
 export default useWishlistData;
