@@ -1,6 +1,7 @@
 import "../../styles/navigation/Header.scss";
 import { useContext } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { PiBooks } from "react-icons/pi";
 import StateContext from "../../context/StateContext";
 
 const Header = () => {
@@ -11,7 +12,9 @@ const Header = () => {
     <header className="app-header">
       <span className="page-title">{pageTitle}</span>
       <span className="app-name">
-        <Link to='/books' className="header-link">Logo Here</Link>
+        <Link to='/books' className="header-button">
+          <PiBooks className="header-icon" />
+        </Link>
       </span>
     </header>
   );
