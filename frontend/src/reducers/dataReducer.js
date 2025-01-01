@@ -1,11 +1,20 @@
 export const ACTIONS = {
+  SET_PAGE_TITLE: 'SET_PAGE_TITLE',
   SET_USER: 'SET_USER',
   SET_WISHLIST: 'SET_WISHLIST',
 }
 
 const dataReducer = (state, action) => {
-  
+
   switch (action.type) {
+
+    case ACTIONS.SET_PAGE_TITLE: {
+      return {
+        ...state,
+        pageTitle: action.pageTitle,
+      };
+    }
+    
     case ACTIONS.SET_USER: {
       return {
         ...state,

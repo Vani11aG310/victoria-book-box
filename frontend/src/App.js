@@ -37,7 +37,7 @@ function App() {
       <Router> 
         <DispatchContext.Provider value={dispatch}>
           <StateContext.Provider value={state}>
-            <Header pageTitle={pageTitle}/>
+            <Header />
             <div className="main-content">
               <Routes>
                 <Route path="/" element={<BookList />} />          

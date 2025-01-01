@@ -1,6 +1,6 @@
 import "../../styles/books/Book.scss";
 
-const Book = (props) => {
+const Book = () => {
     
   return (
     <div>

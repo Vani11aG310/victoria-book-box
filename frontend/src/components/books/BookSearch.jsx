@@ -1,6 +1,6 @@
 import "../../styles/books/BookSearch.scss";
 
-const BookSearch = (props) => {
+const BookSearch = () => {
     
   return (
     <div>

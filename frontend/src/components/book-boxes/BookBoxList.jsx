@@ -1,6 +1,13 @@
 import "../../styles/book-boxes/BookBoxList.scss";
+import { useContext } from "react";
+import StateContext from "../../context/StateContext";
+import DispatchContext from "../../context/DispatchContext";
+import usePageTitle from "../../hooks/usePageTitle";
 
-const BookBoxList = (props) => {
+const BookBoxList = () => {
+  const state = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+  usePageTitle("Book Boxes", dispatch);
     
   return (
     <div>

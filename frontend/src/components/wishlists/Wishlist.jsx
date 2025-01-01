@@ -2,10 +2,14 @@ import "../../styles/wishlists/Wishlist.scss";
 import WishlistItem from "./WishlistItem";
 import { useContext } from "react";
 import StateContext from "../../context/StateContext";
+import DispatchContext from "../../context/DispatchContext";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const Wishlist = () => {
   const state = useContext(StateContext);
   const wishlistData = [...state.wishlistData];
+  const dispatch = useContext(DispatchContext);
+  usePageTitle("Wishlist", dispatch);
 
   return (
     <div>

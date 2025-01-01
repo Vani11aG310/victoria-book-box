@@ -1,10 +1,11 @@
 import "../../styles/navigation/Header.scss";
-import { Link, useLocation } from 'react-router-dom';
+import { useContext } from "react";
+import { Link } from 'react-router-dom';
+import StateContext from "../../context/StateContext";
 
-const Header = ({ pageTitle }) => {
-  const location = useLocation();
-  console.log("lOCATION***", location);
-
+const Header = () => {
+  const state = useContext(StateContext);
+  const pageTitle = state.pageTitle;
 
   return (
     <header className="app-header">

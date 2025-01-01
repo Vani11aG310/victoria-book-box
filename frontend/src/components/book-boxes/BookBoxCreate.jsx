@@ -1,6 +1,6 @@
 import "../../styles/book-boxes/BookBoxCreate.scss";
 
-const BookBoxList = (props) => {
+const BookBoxList = () => {
     
   return (
     <div>
