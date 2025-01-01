@@ -1,6 +1,6 @@
 import "../../styles/wishlists/WishlistSearch.scss";
 
-const WishlistSearch = (props) => {
+const WishlistSearch = () => {
     
   return (
     <div>
