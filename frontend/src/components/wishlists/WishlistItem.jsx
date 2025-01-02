@@ -11,9 +11,9 @@ const WishlistItem = (props) => {
         <p className="wishlist__book-title"><strong>{wishlistItem.book.title}</strong></p>
         <p className="wishlist__book-author">By: <strong>{wishlistItem.book.author}</strong></p>
         <p className="wishlist__book-subject">Subject: <strong>{wishlistItem.book.subject}</strong></p>
-        <p className="wishlist__delete-button">
-          <FaMinusCircle className="wishlist__delete-icon" />
-        </p>
+      </div>
+      <div className="wishlist__delete-button">
+        <FaMinusCircle className="wishlist__delete-icon" />
       </div>
     </div>
   );
