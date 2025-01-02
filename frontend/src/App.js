@@ -13,7 +13,7 @@ import WishlistSearch from "./components/wishlists/WishlistSearch";
 import StateContext from "./context/StateContext";
 import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
-import useWishlistData from './hooks/useWishlistData';
+import useWishlistDataFetch from './hooks/useWishlistDataFetch';
 import useUserData from './hooks/useUserData';
 
 
@@ -27,7 +27,7 @@ function App() {
   useUserData(userId, dispatch);
   
   // Custom Hook to fetch the Wishlist Data for the User.
-  useWishlistData(userId, dispatch);
+  useWishlistDataFetch(userId, dispatch);
 
 
   const pageTitle = "Page Title goes here";
@@ -50,7 +50,8 @@ function App() {
                 <Route path="/book-boxes/:id" element={<BookBox />} />          
               
                 <Route path="/wishlist" element={<Wishlist />} />          
-                <Route path="/wishlist/search" element={<WishlistSearch />} />          
+                <Route path="/wishlist/search" element={<WishlistSearch />} />
+                <Route path="*" element={<h1>404 - Not Found</h1>} />          
               </Routes>
             </div>
             <Footer />

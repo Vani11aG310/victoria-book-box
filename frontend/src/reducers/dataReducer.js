@@ -2,6 +2,7 @@ export const ACTIONS = {
   SET_PAGE_TITLE: 'SET_PAGE_TITLE',
   SET_USER: 'SET_USER',
   SET_WISHLIST: 'SET_WISHLIST',
+  DELETE_WISHLIST_ITEM: 'DELETE_WISHLIST_ITEM',
 }
 
 const dataReducer = (state, action) => {
@@ -29,6 +30,17 @@ const dataReducer = (state, action) => {
         loading: false,
       };
     }
+
+    case ACTIONS.DELETE_WISHLIST_ITEM: {
+      const updatedWishlistData = state.wishlistData.filter((wishlistItem) => {
+        return wishlistItem.id !== action.payload;
+      });
+
+      return {
+        ...state,
+        wishlistData: updatedWishlistData,
+      };
+    } 
 
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);

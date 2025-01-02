@@ -1,8 +1,20 @@
 import "../../styles/wishlists/WishlistItem.scss";
 import { FaMinusCircle } from "react-icons/fa";
+import { useContext } from "react";
+import DispatchContext from "../../context/DispatchContext";
+import { ACTIONS } from "../../reducers/dataReducer";
 
 const WishlistItem = (props) => {
   const { wishlistItem } = props;
+
+  const dispatch = useContext(DispatchContext);
+
+  const handleDelete = () => {
+    dispatch({ 
+      type: ACTIONS.DELETE_WISHLIST_ITEM,
+      payload: wishlistItem.id
+    });
+  }
 
   return (
     <div className="wishlist__item">
@@ -13,7 +25,7 @@ const WishlistItem = (props) => {
         <p className="wishlist__book-subject">Subject: <strong>{wishlistItem.book.subject}</strong></p>
       </div>
       <div className="wishlist__delete-button">
-        <FaMinusCircle className="wishlist__delete-icon" />
+        <FaMinusCircle className="wishlist__delete-icon" onClick={() => handleDelete()} />
       </div>
     </div>
   );

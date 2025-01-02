@@ -2,17 +2,15 @@ import { useEffect } from "react";
 import axios from "axios";
 import { ACTIONS } from "../reducers/dataReducer";
 
-const useWishlistData = (userId, dispatch) => {
-  let payload = [];
+const wishlistDataDelete = (wishlistId, dispatch) => {
   let error = null;
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/wishlists?user_id=${userId}`)
+    axios.delete(`http://localhost:3001/api/wishlists/${wishlistId}`)
       .then((res) => {
-        payload = res.data;
         dispatch({
-          type: ACTIONS.SET_WISHLIST,
-          payload,
+          type: ACTIONS.DELETE_WISHLIST_ITEM,
+          wishlistId,
         });
       })
       .catch((err) => {
@@ -28,9 +26,9 @@ const useWishlistData = (userId, dispatch) => {
     }, []);
 
   return {
-    payload,
+    wishlistId,
     error,
   };
 };
 
-export default useWishlistData;
+export default WishlistDataDelete;
