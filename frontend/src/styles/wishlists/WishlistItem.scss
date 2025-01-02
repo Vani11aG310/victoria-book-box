@@ -20,18 +20,24 @@
 }
 
 .wishlist__book-info {
-  width: 100%;
+  flex-grow: 1; /* Allow book info to take up remaining space */
   text-align: left;
 }
 
-.wishlist__book-title {
-  margin: 0;
-}
-
-.wishlist__book-author {
-  margin: 0.5rem 0;
-}
-
+.wishlist__book-title,
+.wishlist__book-author,
 .wishlist__book-subject {
   margin: 0.5rem 0;
+}
+
+.wishlist__delete-button {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+}
+
+.wishlist__delete-icon {
+  font-size: 1.5rem;
+  color: darkred;
+  background-color: lightgray;
 }
