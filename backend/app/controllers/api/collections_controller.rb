@@ -5,6 +5,8 @@ class Api::CollectionsController < ApplicationController
   def index
     if params[:book_box_id]
       @collections = Collection.includes(:book, :book_box).where(book_box_id: params[:book_box_id])
+    elsif params[:book_id]
+        @collections = Collection.includes(:book, :book_box).where(book_id: params[:book_id])
     else
       @collections = Collection.includes(:book, :book_box).all
     end
