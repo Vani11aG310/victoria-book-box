@@ -18,7 +18,7 @@ class Api::BookBoxesController < ApplicationController
     @book_box = BookBox.new(book_box_params)
 
     if @book_box.save
-      render json: @book_box, status: :created, location: @book_box
+      render json: @book_box, status: :created
     else
       render json: @book_box.errors, status: :unprocessable_entity
     end

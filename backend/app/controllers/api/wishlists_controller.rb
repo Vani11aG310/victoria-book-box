@@ -37,7 +37,7 @@ class Api::WishlistsController < ApplicationController
     @wishlist = Wishlist.new(wishlist_params)
 
     if @wishlist.save
-      render json: @wishlist, status: :created, location: @wishlist
+      render json: @wishlist, status: :created
     else
       render json: @wishlist.errors, status: :unprocessable_entity
     end
@@ -66,6 +66,7 @@ class Api::WishlistsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def wishlist_params
       params.fetch(:wishlist, {})
+      params.require(:wishlist).permit(:user_id, :book_id)
     end
 end
  

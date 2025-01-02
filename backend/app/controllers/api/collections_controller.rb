@@ -18,7 +18,7 @@ class Api::CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
 
     if @collection.save
-      render json: @collection, status: :created, location: @collection
+      render json: @collection, status: :created
     else
       render json: @collection.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:quantity)
+      params.require(:collection).permit(:quantity, :book_id, :book_box_id)
     end
 end
