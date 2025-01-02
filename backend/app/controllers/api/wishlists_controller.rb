@@ -3,21 +3,13 @@ class Api::WishlistsController < ApplicationController
 
   # GET /wishlists
   def index
-    @wishlists = Wishlist.includes(:user, :book).all
+    if params[:user_id]
+      @wishlists = Wishlist.includes(:user, :book).where(user_id: params[:user_id])
+    else
+      @wishlists = Wishlist.includes(:user, :book).all
+    end
 
-    render json: @wishlists.as_json(include: { user: {}, book: {} })
-  end
-
-  # GET /wishlists/1
-  def show
-    render json: @wishlist.as_json(include: { user: {}, book: {} })
-  end
-
-  # GET /wishlists/user_id/:user_id
-  def by_user
-    @wishlists = Wishlist.joins(:book).includes(:user, :book).where(user_id: params[:user_id]).order("books.title asc")
-  
-    wishlists_with_book_details = @wishlists.map do |wishlist|
+    @wishlists_with_book_details = @wishlists.map do |wishlist|
       wishlist.as_json(include: { 
         user: {}, 
         book: {} 
@@ -29,7 +21,12 @@ class Api::WishlistsController < ApplicationController
       )
     end
   
-    render json: wishlists_with_book_details
+    render json: @wishlists_with_book_details
+  end
+
+  # GET /wishlists/1
+  def show
+    render json: @wishlist.as_json(include: { user: {}, book: {} })
   end
 
   # POST /wishlists

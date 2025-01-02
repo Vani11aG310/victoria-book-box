@@ -7,7 +7,7 @@ const useWishlistData = (userId, dispatch) => {
   let error = null;
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/wishlists/user_id/${userId}`)
+    axios.get(`http://localhost:3001/api/wishlists?user_id=${userId}`)
       .then((res) => {
         payload = res.data;
         dispatch({
