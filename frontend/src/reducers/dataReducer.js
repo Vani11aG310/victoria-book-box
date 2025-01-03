@@ -32,7 +32,6 @@ const dataReducer = (state, action) => {
     }
 
     case ACTIONS.DELETE_WISHLIST_ITEM: {
-      console.log("*** Deleting wishlist item with id: ***", action.wishlistId);
       const updatedWishlistData = state.wishlistData.filter((wishlistItem) => {
         return wishlistItem.id !== action.wishlistId;
       });
