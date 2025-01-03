@@ -2,7 +2,7 @@ import "../../styles/wishlists/WishlistItem.scss";
 import { FaMinusCircle } from "react-icons/fa";
 import { useContext } from "react";
 import DispatchContext from "../../context/DispatchContext";
-import { ACTIONS } from "../../reducers/dataReducer";
+import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
 
 const WishlistItem = (props) => {
   const { wishlistItem } = props;
@@ -10,10 +10,11 @@ const WishlistItem = (props) => {
   const dispatch = useContext(DispatchContext);
 
   const handleDelete = () => {
-    dispatch({ 
-      type: ACTIONS.DELETE_WISHLIST_ITEM,
-      payload: wishlistItem.id
-    });
+    wishListDataDelete(wishlistItem.id, dispatch);
+    // dispatch({ 
+    //   type: ACTIONS.DELETE_WISHLIST_ITEM,
+    //   payload: wishlistItem.id
+    // });
   }
 
   return (
