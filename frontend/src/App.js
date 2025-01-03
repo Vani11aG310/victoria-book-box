@@ -29,9 +29,6 @@ function App() {
   // Custom Hook to fetch the Wishlist Data for the User.
   useWishlistDataFetch(userId, dispatch);
 
-
-  const pageTitle = "Page Title goes here";
-
   return (
     <div className="App">
       <Router> 
