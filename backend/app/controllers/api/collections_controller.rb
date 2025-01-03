@@ -3,9 +3,29 @@ class Api::CollectionsController < ApplicationController
 
   # GET /collections
   def index
-    @collections = Collection.includes(:book, :book_box).all
+    if params[:book_box_id]
+      @collections = Collection.includes(:book, :book_box).where(book_box_id: params[:book_box_id])
+    elsif params[:book_id]
+        @collections = Collection.includes(:book, :book_box).where(book_id: params[:book_id])
+    else
+      @collections = Collection.includes(:book, :book_box).all
+    end
 
-    render json: @collections.as_json(include: { book: {}, book_box: {} })
+    # render json: @collections.as_json(include: { book: {}, book_box: {} })
+    
+    @collections_with_book_details = @collections.map do |collection|
+      collection.as_json(include: { 
+        book: {}, 
+        book_box: {} 
+      }).merge(
+        book: collection.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{collection.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{collection.book.open_library_key}"
+        )
+      )
+    end
+  
+    render json: @collections_with_book_details
   end
 
   # GET /collections/1
@@ -18,7 +38,7 @@ class Api::CollectionsController < ApplicationController
     @collection = Collection.new(collection_params)
 
     if @collection.save
-      render json: @collection, status: :created, location: @collection
+      render json: @collection, status: :created
     else
       render json: @collection.errors, status: :unprocessable_entity
     end
@@ -39,6 +59,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
       @collection = Collection.find(params[:id])
@@ -46,6 +67,6 @@ class Api::CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:quantity)
+      params.require(:collection).permit(:quantity, :book_id, :book_box_id)
     end
 end

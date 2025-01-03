@@ -33,7 +33,7 @@ class Api::BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      render json: @book, status: :created, location: @book
+      render json: @book, status: :created
     else
       render json: @book.errors, status: :unprocessable_entity
     end
@@ -61,6 +61,6 @@ class Api::BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :cover_url, :open_library_key)
+      params.require(:book).permit(:title, :open_library_cover_key, :open_library_key, :author, :subject)
     end
 end

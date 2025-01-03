@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import axios from "axios";
 import { ACTIONS } from "../reducers/dataReducer";
 
-const useWishlistData = (userId, dispatch) => {
+const useWishlistDataFetch = (userId, dispatch) => {
   let payload = [];
   let error = null;
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/wishlists/user_id/${userId}`)
+    axios.get(`http://localhost:3001/api/wishlists?user_id=${userId}`)
       .then((res) => {
         payload = res.data;
         dispatch({
@@ -33,4 +33,4 @@ const useWishlistData = (userId, dispatch) => {
   };
 };
 
-export default useWishlistData;
+export default useWishlistDataFetch;

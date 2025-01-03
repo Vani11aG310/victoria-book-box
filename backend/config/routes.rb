@@ -7,11 +7,7 @@ Rails.application.routes.draw do
     resources :book_boxes
     resources :collections
     resources :users
-    resources :wishlists do
-      collection do
-        get 'user_id/:user_id', to: 'wishlists#by_user', as: 'by_user'
-      end
-    end
+    resources :wishlists
   end
 end
  
