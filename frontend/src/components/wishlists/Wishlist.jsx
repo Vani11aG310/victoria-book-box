@@ -1,6 +1,7 @@
 import "../../styles/wishlists/Wishlist.scss";
 import WishlistItem from "./WishlistItem";
 import { useContext } from "react";
+import {useLocation, useNavigate} from 'react-router-dom';
 import { FaPlusCircle } from "react-icons/fa";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
@@ -10,10 +11,13 @@ const Wishlist = () => {
   const state = useContext(StateContext);
   const wishlistData = [...state.wishlistData];
   const dispatch = useContext(DispatchContext);
+  const {pathname} = useLocation();
+  const navigate = useNavigate();
   usePageTitle("Wishlist", dispatch);
 
   const handleAdd = () => {
-    // TODO: Add a new item to the wishlist
+    const url = `${pathname}/search`;
+    navigate(url);
   }
 
   return (

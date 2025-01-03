@@ -1,0 +1,35 @@
+wishlist-search__form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wishlist-search__input {
+  flex-grow: 1;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: yellow;
+}
+
+.wishlist-search__submit-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.wishlist-search__submit:hover {
+  color: lightgray;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.wishlist-search__submit-icon {
+  font-size: 1.5rem;
+}

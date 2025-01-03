@@ -46,8 +46,8 @@ function App() {
                 <Route path="/book-boxes/create" element={<BookBoxCreate />} />          
                 <Route path="/book-boxes/:id" element={<BookBox />} />          
               
-                <Route path="/wishlist" element={<Wishlist />} />          
-                <Route path="/wishlist/search" element={<WishlistSearch />} />
+                <Route path="/wishlists" element={<Wishlist />} />          
+                <Route path="/wishlists/search" element={<WishlistSearch />} />
                 <Route path="*" element={<h1>404 - Not Found</h1>} />          
               </Routes>
             </div>

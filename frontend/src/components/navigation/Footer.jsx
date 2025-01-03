@@ -13,7 +13,7 @@ const Footer = () => {
         <FaBox className="footer-icon" />
         <span>Boxes</span>
       </Link>
-      <Link to='/wishlist' className="footer-button">
+      <Link to='/wishlists' className="footer-button">
         <FaHeart className="footer-icon" />
         <span>Wishlist</span>
       </Link>
