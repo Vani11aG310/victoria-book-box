@@ -6,3 +6,31 @@
   margin: 0;
   padding: 0;
 }
+
+/* Floating Action Button (FAB) */
+.wishlist__fab {
+  position: fixed;
+  width: 2.5rem;
+  height: 2.5rem;
+  bottom: 4.5rem;
+  right: 1.5rem;
+  background-color: dimgray;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.wishlist__fab:hover {
+  background-color: #444444;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.wishlist__add-icon {
+  font-size: 1.5rem;
+}
