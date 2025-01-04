@@ -1,14 +1,14 @@
 import axios from "axios";
 import { ACTIONS } from "../../reducers/dataReducer";
 
-const wishlistDataDelete = (wishlistId, dispatch) => {
+const wishlistDataCreate = (wishlist, dispatch) => {
   let error = null;
 
-  axios.delete(`http://localhost:3001/api/wishlists/${wishlistId}`)
+  axios.post(`http://localhost:3001/api/wishlists`)
     .then((res) => {
       dispatch({
-        type: ACTIONS.DELETE_WISHLIST_ITEM,
-        wishlistId,
+        type: ACTIONS.CREATE_WISHLIST_ITEM,
+        // wishlistId,
       });
     })
     .catch((err) => {
@@ -21,4 +21,4 @@ const wishlistDataDelete = (wishlistId, dispatch) => {
   };
 };
 
-export default wishlistDataDelete;
+export default wishlistDataCreate;
