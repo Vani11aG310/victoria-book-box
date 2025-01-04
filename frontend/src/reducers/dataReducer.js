@@ -3,6 +3,7 @@ export const ACTIONS = {
   SET_USER: 'SET_USER',
   SET_WISHLIST: 'SET_WISHLIST',
   DELETE_WISHLIST_ITEM: 'DELETE_WISHLIST_ITEM',
+  CREATE_WISHLIST_ITEM: 'CREATE_WISHLIST_ITEM',
 }
 
 const dataReducer = (state, action) => {

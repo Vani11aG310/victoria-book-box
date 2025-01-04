@@ -16,14 +16,8 @@ const useWishlistDataFetch = (userId, dispatch) => {
         });
       })
       .catch((err) => {
-        error = err;
-        if (err.response) {
-          console.error("Response error:", err.response);
-        } else if (err.request) {
-          console.error("Request error:", err.request);
-        } else {
-          console.error("General error:", err.message);
-        }
+        error = err.message;
+        console.error("Error: ", err.message);
       });
     }, []);
 

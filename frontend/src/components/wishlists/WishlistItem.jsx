@@ -11,10 +11,6 @@ const WishlistItem = (props) => {
 
   const handleDelete = () => {
     wishListDataDelete(wishlistItem.id, dispatch);
-    // dispatch({ 
-    //   type: ACTIONS.DELETE_WISHLIST_ITEM,
-    //   payload: wishlistItem.id
-    // });
   }
 
   return (
