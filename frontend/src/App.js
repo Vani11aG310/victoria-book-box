@@ -9,7 +9,7 @@ import BookBoxList from "./components/book-boxes/BookBoxList";
 import BookBoxCreate from "./components/book-boxes/BookBoxCreate";
 import BookBox from "./components/book-boxes/BookBox";
 import Wishlist from "./components/wishlists/Wishlist";
-import WishlistSearch from "./components/wishlists/WishlistSearch";
+import Search from "./components/search/Search";
 import StateContext from "./context/StateContext";
 import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
@@ -47,7 +47,7 @@ function App() {
                 <Route path="/book-boxes/:id" element={<BookBox />} />          
               
                 <Route path="/wishlists" element={<Wishlist />} />          
-                <Route path="/wishlists/search" element={<WishlistSearch />} />
+                <Route path="/wishlists/search" element={<Search />} />
                 <Route path="*" element={<h1>404 - Not Found</h1>} />          
               </Routes>
             </div>

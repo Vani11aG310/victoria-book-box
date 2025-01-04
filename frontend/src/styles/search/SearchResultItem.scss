@@ -1,4 +1,4 @@
-.wishlist-search-result__item {
+.search-result__item {
   margin: 0.5rem;
   padding: 0.5rem;
   border-width: 0.5px;
@@ -13,25 +13,25 @@
   justify-content: space-between;
 }
 
-.wishlist-search-result__book-cover {
+.search-result__book-cover {
   height: 150px;
   width: auto;
   margin-right: 1rem;
   border-radius: 8px;
 }
 
-.wishlist-search-result__book-info {
+.search-result__book-info {
   flex-grow: 1;
   text-align: left;
 }
 
-.wishlist-search-result__book-title,
-.wishlist-search-result__book-author,
-.wishlist-search-result__book-open-library-key {
+.search-result__book-title,
+.search-result__book-author,
+.search-result__book-open-library-key {
   margin: 0.5rem 0;
 }
 
-.wishlist-search-result__add-button {
+.search-result__add-button {
   display: flex;
   align-items: center;
   // align-self: flex-end
@@ -43,10 +43,10 @@
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.wishlist-search-result__add-button:hover {
+.search-result__add-button:hover {
   color:#444444;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
-.wishlist-search-result__add-icon {
+.search-result__add-icon {
   font-size: 1.5rem;
 }
