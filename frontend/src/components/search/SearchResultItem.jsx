@@ -29,7 +29,8 @@ const SearchResultItem = (props) => {
       <div className="search-result__book-info">
         <p className="search-result__book-title"><strong>{book.title}</strong></p>
         <p className="search-result__book-author">By: <strong>{book.author_name}</strong></p>
-        <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p>
+        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p>
+        <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
       </div>
       <div className="search-result__add-button">
         <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} />
