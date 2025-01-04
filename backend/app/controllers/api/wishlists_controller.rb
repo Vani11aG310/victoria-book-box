@@ -26,7 +26,15 @@ class Api::WishlistsController < ApplicationController
 
   # GET /wishlists/1
   def show
-    render json: @wishlist.as_json(include: { user: {}, book: {} })
+    render json: @wishlist.as_json(include: { 
+      user: {},
+      book: {}
+    }).merge(
+      book: @wishlist.book.as_json.merge(
+        cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+        open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+      )
+    )
   end
 
   # POST /wishlists
@@ -34,7 +42,16 @@ class Api::WishlistsController < ApplicationController
     @wishlist = Wishlist.new(wishlist_params)
 
     if @wishlist.save
-      render json: @wishlist, status: :created
+      render json: @wishlist.as_json(include: {
+        user: {}, 
+        book: {}
+        }).merge(
+          book: @wishlist.book.as_json.merge(
+            cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+            open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+          )
+        ),
+        status: :created
     else
       render json: @wishlist.errors, status: :unprocessable_entity
     end

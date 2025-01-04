@@ -1,6 +1,7 @@
 import "../../styles/search/SearchResultItem.scss";
 import { FaPlusCircle } from "react-icons/fa";
 import { useContext } from "react";
+import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
 
@@ -8,11 +9,16 @@ const SearchResultItem = (props) => {
   const { book } = props;
   book.cover_url = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg`;
 
+  const state = useContext(StateContext);
+  const userId = state.userId;
+
   const dispatch = useContext(DispatchContext);
 
   const handleAdd = () => {
-    wishListDataCreate(
-      {userId: 1, bookId: book.key},
+    wishListDataCreate({
+        userId, 
+        bookKey: book.key
+      },
       dispatch
     );
   }
