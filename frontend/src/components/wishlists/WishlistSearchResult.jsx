@@ -1,4 +1,4 @@
-import "../../styles/wishlists/Wishlist.scss";
+import "../../styles/wishlists/WishlistSearchResult.scss";
 import WishlistSearchResultItem from "./WishlistSearchResultItem";
 import useSearchOpenLibrary from "../../hooks/useSearchOpenLibrary";
 
@@ -10,10 +10,10 @@ const WishlistSearchResult = (props) => {
 
   return (
     <div>
-      {loading && <h2>Searching...</h2>}
-      {(!loading && books.length === 0 && searchValue) && <h2>No results found.</h2>}
+      {loading && <h3 className="wishlist-search-result__status">Searching...</h3>}
+      {(!loading && searchValue && (Array.isArray(books) && books.length === 0)) && <h3 className="wishlist-search-result__status">No results found.</h3>}
 
-      <ul className="wishlist">
+      <ul className="wishlist-search-result">
         {Array.isArray(books) && books.map((book) => {
           return <WishlistSearchResultItem key={book.key} book={book} />;
         })}
