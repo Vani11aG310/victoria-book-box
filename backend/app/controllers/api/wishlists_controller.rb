@@ -60,7 +60,15 @@ class Api::WishlistsController < ApplicationController
   # PATCH/PUT /wishlists/1
   def update
     if @wishlist.update(wishlist_params)
-      render json: @wishlist
+      render json: @wishlist.as_json(include: {
+        user: {}, 
+        book: {}
+        }).merge(
+          book: @wishlist.book.as_json.merge(
+            cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+            open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+          )
+        )
     else
       render json: @wishlist.errors, status: :unprocessable_entity
     end
@@ -80,7 +88,15 @@ class Api::WishlistsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def wishlist_params
       params.fetch(:wishlist, {})
-      params.require(:wishlist).permit(:user_id, :book_id)
+      params.require(:wishlist).permit(
+        :user_id,
+        :book_id,
+        :title,
+        :author,
+        :subject,
+        :open_library_key,
+        :open_library_cover_key
+      )
     end
 end
  

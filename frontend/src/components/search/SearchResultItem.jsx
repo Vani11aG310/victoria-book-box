@@ -17,7 +17,13 @@ const SearchResultItem = (props) => {
   const handleAdd = () => {
     wishListDataCreate({
         userId, 
-        bookKey: book.key
+        book: {
+          title: book.title,
+          author: book.author_name,
+          subject: null,  // Not available in search results
+          openLibraryKey: book.key,
+          openLibraryCoverKey: book.cover_edition_key,
+        },
       },
       dispatch
     );
