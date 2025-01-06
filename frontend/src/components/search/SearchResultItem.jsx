@@ -14,6 +14,10 @@ const SearchResultItem = (props) => {
 
   const dispatch = useContext(DispatchContext);
 
+  // Is the book already included in the wishlist?
+  // If yes, do not show the + button.
+  const isIncludedInWishlist = state.wishlistData.some((wishlistItem) => wishlistItem.book.open_library_key === book.key);
+
   const handleAdd = () => {
     wishListDataCreate({
         userId, 
@@ -36,11 +40,11 @@ const SearchResultItem = (props) => {
         <p className="search-result__book-title"><strong>{book.title}</strong></p>
         <p className="search-result__book-author">By: <strong>{book.author_name && book.author_name[0]}</strong></p>
         <p className="search-result__book-subject">Subject: <strong>{book.subject && book.subject[0]}</strong></p>
-        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p>
-        <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
+        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p> */}
+        {/* <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
       </div>
       <div className="search-result__add-button">
-        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} />
+        {!isIncludedInWishlist && <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} />}
       </div>
     </div>
   );
