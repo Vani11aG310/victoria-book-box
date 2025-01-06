@@ -1,5 +1,5 @@
 import "../../styles/wishlists/WishlistItem.scss";
-import { FaMinusCircle } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { useContext } from "react";
 import DispatchContext from "../../context/DispatchContext";
 import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
@@ -21,8 +21,8 @@ const WishlistItem = (props) => {
         <p className="wishlist__book-author">By: <strong>{wishlistItem.book.author}</strong></p>
         <p className="wishlist__book-subject">Subject: <strong>{wishlistItem.book.subject}</strong></p>
       </div>
-      <div className="wishlist__delete-button">
-        <FaMinusCircle className="wishlist__delete-icon" onClick={() => handleDelete()} />
+      <div className="wishlist__heart-button">
+        <FaHeart className="wishlist__heart-icon" onClick={() => handleDelete()} />
       </div>
     </div>
   );

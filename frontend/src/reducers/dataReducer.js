@@ -44,9 +44,20 @@ const dataReducer = (state, action) => {
     } 
 
     case ACTIONS.CREATE_WISHLIST_ITEM: {
+      const newWishlistItem = action.payload;
+
+      // Check if the item already exists in the wishlist
+      const itemExists = state.wishlistData.some((wishlistItem) => wishlistItem.id === newWishlistItem.id);
+
+      // If the item exists, return the current state
+      if (itemExists) {
+        return state;
+      }
+
+      // If the item does not exist, add it to the wishlist
       return {
         ...state,
-        wishlistData: [...state.wishlistData, action.payload],
+        wishlistData: [...state.wishlistData, newWishlistItem],
       };
     }
 
