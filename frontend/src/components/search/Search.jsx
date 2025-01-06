@@ -14,7 +14,6 @@ const Search = () => {
     event.preventDefault();
     const searchValue = event.target.search.value
     setSearchValue(searchValue);
-    console.log("*** Search submitted", searchValue);
   }
 
   return (

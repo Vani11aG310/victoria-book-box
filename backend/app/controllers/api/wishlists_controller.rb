@@ -39,7 +39,25 @@ class Api::WishlistsController < ApplicationController
 
   # POST /wishlists
   def create
-    @wishlist = Wishlist.new(wishlist_params)
+    book_id = wishlist_params[:book_id]
+
+    unless book_id
+      book = Book.find_by(open_library_key: wishlist_params[:open_library_key])
+
+      unless book
+        book = Book.create(
+          title: wishlist_params[:title],
+          author: wishlist_params[:author],
+          subject: wishlist_params[:subject],
+          open_library_key: wishlist_params[:open_library_key],
+          open_library_cover_key: wishlist_params[:open_library_cover_key]
+        )
+      end
+
+      book_id = book.id
+    end
+
+    @wishlist = Wishlist.new(wishlist_params.except(:title, :author, :subject, :open_library_key, :open_library_cover_key).merge(book_id: book_id))
 
     if @wishlist.save
       render json: @wishlist.as_json(include: {
@@ -80,6 +98,7 @@ class Api::WishlistsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_wishlist
       @wishlist = Wishlist.find(params[:id])
@@ -87,7 +106,6 @@ class Api::WishlistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wishlist_params
-      params.fetch(:wishlist, {})
       params.require(:wishlist).permit(
         :user_id,
         :book_id,
@@ -99,4 +117,3 @@ class Api::WishlistsController < ApplicationController
       )
     end
 end
- 

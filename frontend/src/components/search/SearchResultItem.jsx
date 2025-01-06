@@ -19,7 +19,7 @@ const SearchResultItem = (props) => {
         userId, 
         book: {
           title: book.title,
-          author: book.author_name,
+          author: book.author_name ? book.author_name[0] : "Unknown",
           subject: null,  // Not available in search results
           openLibraryKey: book.key,
           openLibraryCoverKey: book.cover_edition_key,
