@@ -12,7 +12,7 @@ const useSearchOpenLibrary = (searchValue) => {
     setLoading(true);
     setError(null);
 
-    axios.get(`https://openlibrary.org/search.json?q=${searchValue}&fields=key,title,author_name,cover_edition_key&limit=20`)
+    axios.get(`https://openlibrary.org/search.json?q=${searchValue}&fields=key,title,author_name,cover_edition_key,subject&limit=20`)
       .then((res) => {
         setLoading(false);
         // Filter out books without a cover image
