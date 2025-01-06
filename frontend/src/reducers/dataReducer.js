@@ -43,6 +43,13 @@ const dataReducer = (state, action) => {
       };
     } 
 
+    case ACTIONS.CREATE_WISHLIST_ITEM: {
+      return {
+        ...state,
+        wishlistData: [...state.wishlistData, action.payload],
+      };
+    }
+
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }

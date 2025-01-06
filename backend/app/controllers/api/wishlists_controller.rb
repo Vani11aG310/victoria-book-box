@@ -26,15 +26,50 @@ class Api::WishlistsController < ApplicationController
 
   # GET /wishlists/1
   def show
-    render json: @wishlist.as_json(include: { user: {}, book: {} })
+    render json: @wishlist.as_json(include: { 
+      user: {},
+      book: {}
+    }).merge(
+      book: @wishlist.book.as_json.merge(
+        cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+        open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+      )
+    )
   end
 
   # POST /wishlists
   def create
-    @wishlist = Wishlist.new(wishlist_params)
+    book_id = wishlist_params[:book_id]
+
+    unless book_id
+      book = Book.find_by(open_library_key: wishlist_params[:open_library_key])
+
+      unless book
+        book = Book.create(
+          title: wishlist_params[:title],
+          author: wishlist_params[:author],
+          subject: wishlist_params[:subject],
+          open_library_key: wishlist_params[:open_library_key],
+          open_library_cover_key: wishlist_params[:open_library_cover_key]
+        )
+      end
+
+      book_id = book.id
+    end
+
+    @wishlist = Wishlist.new(wishlist_params.except(:title, :author, :subject, :open_library_key, :open_library_cover_key).merge(book_id: book_id))
 
     if @wishlist.save
-      render json: @wishlist, status: :created
+      render json: @wishlist.as_json(include: {
+        user: {}, 
+        book: {}
+        }).merge(
+          book: @wishlist.book.as_json.merge(
+            cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+            open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+          )
+        ),
+        status: :created
     else
       render json: @wishlist.errors, status: :unprocessable_entity
     end
@@ -43,7 +78,15 @@ class Api::WishlistsController < ApplicationController
   # PATCH/PUT /wishlists/1
   def update
     if @wishlist.update(wishlist_params)
-      render json: @wishlist
+      render json: @wishlist.as_json(include: {
+        user: {}, 
+        book: {}
+        }).merge(
+          book: @wishlist.book.as_json.merge(
+            cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+            open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+          )
+        )
     else
       render json: @wishlist.errors, status: :unprocessable_entity
     end
@@ -55,6 +98,7 @@ class Api::WishlistsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_wishlist
       @wishlist = Wishlist.find(params[:id])
@@ -62,8 +106,14 @@ class Api::WishlistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wishlist_params
-      params.fetch(:wishlist, {})
-      params.require(:wishlist).permit(:user_id, :book_id)
+      params.require(:wishlist).permit(
+        :user_id,
+        :book_id,
+        :title,
+        :author,
+        :subject,
+        :open_library_key,
+        :open_library_cover_key
+      )
     end
 end
- 
