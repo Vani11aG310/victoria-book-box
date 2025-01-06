@@ -50,6 +50,14 @@ const dataReducer = (state, action) => {
       };
     }
 
+    case ACTIONS.SET_BOOKLIST: {
+      return {
+        ...state,
+        bookData: action.payload,
+        loading: false
+      }
+    }
+
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
   }
