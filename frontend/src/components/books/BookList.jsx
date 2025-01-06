@@ -14,7 +14,7 @@ const BookList = () => {
     
   return (
     <div>
-      <ul className="wishlist">
+      <ul className="booklist">
         {Array.isArray(bookList) && bookList.map((book) => {
           return <BooklistItem key={book.id} booklistItem={book} />;
         })}

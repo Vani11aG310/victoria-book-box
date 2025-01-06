@@ -1,0 +1,32 @@
+.booklist-item__item {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-width: 0.5px;
+  border-color: lightgray;
+  border-style: solid;
+  border-radius: 8px;
+  width: 100%;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booklist-item__book-cover {
+  height: 100px;
+  width: auto;
+  margin-right: 1rem;
+  border-radius: 8px;
+}
+
+.booklist-item__book-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.booklist-item__book-title,
+.booklist-item__book-author,
+.booklist-item__book-subject {
+  margin: 0.5rem 0;
+}
