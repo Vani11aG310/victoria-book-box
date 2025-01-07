@@ -1,0 +1,28 @@
+.book__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.book__author {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.book__cover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.book__info-list {
+  background-color: #f0f0f0; // You can change this to any color you prefer
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+a {
+  color: black;
+}
