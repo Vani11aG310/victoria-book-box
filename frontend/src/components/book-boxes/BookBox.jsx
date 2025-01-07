@@ -5,6 +5,8 @@ import StateContext from '../../context/StateContext';
 import DispatchContext from "../../context/DispatchContext";
 import useCollections from "../../hooks/useCollections";
 import usePageTitle from "../../hooks/usePageTitle";
+import { FaPlusCircle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const BookBox = () => {
   const { id } = useParams();
@@ -50,6 +52,11 @@ const BookBox = () => {
       ) : (
         <p>Loading book box details...</p>
       )}
+      <Link to='/books/search'>
+        <div className="book-box__fab"> 
+        <FaPlusCircle className="book-box__add-icon"  />
+      </div>
+      </Link>
     </div>
   );
 }
