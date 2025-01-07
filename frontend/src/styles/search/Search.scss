@@ -23,13 +23,11 @@
   color: white;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s;
 }
 
 .search__submit-button:hover {
   color: lightgray;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .search__submit-icon {

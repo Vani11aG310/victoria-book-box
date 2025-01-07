@@ -1,9 +1,10 @@
 import "../../styles/search/SearchResultItem.scss";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaHeart, FaRegHeart } from "react-icons/fa";
 import { useContext } from "react";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
+import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
 
 const SearchResultItem = (props) => {
   const { book } = props;
@@ -14,32 +15,44 @@ const SearchResultItem = (props) => {
 
   const dispatch = useContext(DispatchContext);
 
+  // Is the book already included in the wishlist?
+  const wishlistItem = state.wishlistData.find((wishlistItem) => wishlistItem.book.open_library_key === book.key);
+
   const handleAdd = () => {
     wishListDataCreate({
-        userId, 
-        book: {
-          title: book.title,
-          author: book.author_name ? book.author_name[0] : "Unknown",
-          subject: null,  // Not available in search results
-          openLibraryKey: book.key,
-          openLibraryCoverKey: book.cover_edition_key,
-        },
+      userId,
+      book: {
+        title: book.title,
+        author: book.author_name && book.author_name[0],
+        subject: book.subject && book.subject[0],
+        openLibraryKey: book.key,
+        openLibraryCoverKey: book.cover_edition_key,
       },
+    },
       dispatch
     );
   }
 
-   return (
+  const handleDelete = () => {
+    wishListDataDelete(wishlistItem.id, dispatch);
+  }
+
+  return (
     <div className="wishlist__item">
       <img className="search-result__book-cover" src={book.cover_url} alt={`Cover picture of ${book.title}`} />
       <div className="search-result__book-info">
         <p className="search-result__book-title"><strong>{book.title}</strong></p>
-        <p className="search-result__book-author">By: <strong>{book.author_name}</strong></p>
-        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p>
-        <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
+        <p className="search-result__book-author">By: <strong>{book.author_name && book.author_name[0]}</strong></p>
+        <p className="search-result__book-subject">Subject: <strong>{book.subject && book.subject[0]}</strong></p>
+        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p> */}
+        {/* <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
       </div>
-      <div className="search-result__add-button">
-        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} />
+      {/* <div className="search-result__add-button"> */}
+      {/* <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} /> */}
+      {/* </div> */}
+      <div className="search-result__heart-button">
+        {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={() => handleDelete()} />}
+        {!wishlistItem && <FaRegHeart className="search-result__reg-heart-icon" onClick={() => handleAdd()} />}
       </div>
     </div>
   );

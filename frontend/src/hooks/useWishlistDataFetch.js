@@ -4,11 +4,13 @@ import { ACTIONS } from "../reducers/dataReducer";
 
 const useWishlistDataFetch = (userId, dispatch) => {
   let payload = [];
+  let loading = true;
   let error = null;
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/wishlists?user_id=${userId}`)
       .then((res) => {
+        loading = false;
         payload = res.data;
         dispatch({
           type: ACTIONS.SET_WISHLIST,
@@ -16,6 +18,7 @@ const useWishlistDataFetch = (userId, dispatch) => {
         });
       })
       .catch((err) => {
+        loading = false;
         error = err.message;
         console.error("Error: ", err.message);
       });
@@ -23,6 +26,7 @@ const useWishlistDataFetch = (userId, dispatch) => {
 
   return {
     payload,
+    loading,
     error,
   };
 };
