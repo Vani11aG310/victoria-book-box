@@ -9,6 +9,7 @@ const BooklistItem = (props) => {
   const { booklistItem } = props;
 
   const [collection, setCollection] = useState([]);
+  const [bookDetails, setBookDetails] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -18,13 +19,22 @@ const BooklistItem = (props) => {
     })
     .catch((err) => {
       setError(err.message);
-      console.error("Error: ", err.message);
+      console.error("Error: ", error);
+    });
+
+    axios.get(`http://localhost:3001/api/books/${booklistItem.id}`)
+    .then((res) => {
+      setBookDetails([...bookDetails, res.data]);
+    })
+    .catch((err) => {
+      setError(err.message);
+      console.error("Error: ", error);
     });
   }, [booklistItem.id]);
 
 
   return (
-    <Link className="booklist-item__item" to={{pathname:`/books/${booklistItem.id}`}} state={{ collection: collection[0], bookDetails: booklistItem }}>
+    <Link className="booklist-item__item" to={{pathname:`/books/${booklistItem.id}`}} state={{ collection: collection[0], bookDetails: bookDetails[0] }}>
       <img className="booklist-item__book-cover" src={booklistItem.cover_url} alt={`Cover picture of ${booklistItem.title}`} />
       <div className="booklist-item__book-info">
         <p className="booklist-item__book-title"><strong>{booklistItem.title}</strong></p>
