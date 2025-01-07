@@ -1,5 +1,5 @@
 class Api::BookBoxesController < ApplicationController
-  before_action :set_book_box, only: %i[ show update destroy ]
+  before_action :set_book_box, only: %i[show update destroy]
 
   # GET /book_boxes
   def index
@@ -39,13 +39,14 @@ class Api::BookBoxesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book_box
-      @book_box = BookBox.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def book_box_params
-      params.require(:book_box).permit(:name, :address, :latitude, :longitude)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book_box
+    @book_box = BookBox.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def book_box_params
+    params.require(:book_box).permit(:name, :address, :latitude, :longitude)
+  end
 end

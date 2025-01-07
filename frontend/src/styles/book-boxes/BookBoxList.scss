@@ -1,0 +1,47 @@
+.book-boxes__list {
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.book-boxes__header {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.book-boxes__items {
+  list-style: none;
+  padding: 0;
+}
+
+.book-boxes__item {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: lightgray;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid lightgray;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-boxes__link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.book-boxes__item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.book-boxes__link:hover {
+  color: #007bff;
+}
+

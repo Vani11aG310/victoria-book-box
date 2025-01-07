@@ -1,0 +1,50 @@
+.book-box {
+  margin: 2rem;
+  padding: 2rem;
+  background-color: dimgray;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-box__header {
+  margin-bottom: 1.5rem;
+}
+
+.book-box__title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: black;
+}
+
+.book-box__address {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.book-box__collections {
+  list-style: none;
+  padding: 0;
+}
+
+.book-box__collection-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  background-color: lightgray;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-box__collection-item:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-box__quantity {
+  font-weight: bold;
+  color: #007bff;
+}
+

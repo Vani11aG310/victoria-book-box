@@ -8,6 +8,7 @@ const useApplicationData = () => {
     bookData: [],
     bookBoxesData: [],
     wishlistData: [],
+    collections: [],
   };
 
   const [state, dispatch] = useReducer(dataReducer, initialState);

@@ -15,6 +15,8 @@ import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
 import useWishlistDataFetch from './hooks/useWishlistDataFetch';
 import useUserData from './hooks/useUserData';
+import useBookBoxes from "./hooks/useBookBoxes";
+import useCollections from "./hooks/useCollections";
 
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
   
   // Custom Hook to fetch the Wishlist Data for the User.
   useWishlistDataFetch(userId, dispatch);
+
+  //Book Boxes
+  useBookBoxes(dispatch);
+  
 
   return (
     <div className="App">
