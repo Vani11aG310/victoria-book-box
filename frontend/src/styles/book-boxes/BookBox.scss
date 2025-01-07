@@ -17,9 +17,16 @@
   color: black;
 }
 
+.book-box__book-cover {
+  height: 100px;
+  width: auto;
+  margin-right: 1rem;
+  border-radius: 8px;
+}
+
 .book-box__address {
   font-size: 1.1rem;
-  color: #666;
+  color: black;
 }
 
 .book-box__collections {
@@ -45,6 +52,29 @@
 
 .book-box__quantity {
   font-weight: bold;
-  color: #007bff;
+  color: black;
+  text-align: right;
+  flex-shrink: 0;
 }
 
+.book-box__book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.book-box__book-title,
+.book-box__book-author,
+.book-box__book-subject {
+  margin: 0.25rem 0;
+}
+
+.book-box__book-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.book-box__book-author,
+.book-box__book-subject {
+  font-size: 1rem;
+}

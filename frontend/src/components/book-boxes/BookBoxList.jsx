@@ -12,13 +12,14 @@ const BookBoxList = () => {
     
   return (
     <div className="book-boxes__list">
-      <h4 className="book-boxes__header">Boxes in Victoria</h4>
+      
       <ul className="book-boxes__items">
         {state.bookBoxes ? (
           state.bookBoxes.map((bookBox) => (
             <li key={bookBox.id} className="book-boxes__item">
               <Link to={`/book-boxes/${bookBox.id}`} className="book-boxes__link">
               <span className="bookbox__name">{bookBox.name}</span>
+              <p>{bookBox.address}</p>
               </Link>
             </li>
           ))
