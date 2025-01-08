@@ -4,6 +4,8 @@ export const ACTIONS = {
   SET_WISHLIST: 'SET_WISHLIST',
   DELETE_WISHLIST_ITEM: 'DELETE_WISHLIST_ITEM',
   CREATE_WISHLIST_ITEM: 'CREATE_WISHLIST_ITEM',
+  SET_BOOK_BOXES: 'SET_BOOK_BOXES',
+  SET_COLLECTIONS: 'SET_COLLECTIONS',
 }
 
 const dataReducer = (state, action) => {
@@ -30,6 +32,14 @@ const dataReducer = (state, action) => {
         wishlistData: action.payload,
         loading: false,
       };
+    }
+
+    case ACTIONS.SET_BOOK_BOXES: {
+      return { ...state, bookBoxes: action.payload};
+    }
+
+    case ACTIONS.SET_COLLECTIONS: {
+      return { ...state, collections: action.payload };
     }
 
     case ACTIONS.DELETE_WISHLIST_ITEM: {
