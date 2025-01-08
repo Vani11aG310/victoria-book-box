@@ -43,19 +43,43 @@
   background-color: lightgray;
   color: black;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .book-box__collection-item:hover {
-  background-color: #f1f1f1;
+  transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .book-box__quantity {
   font-weight: bold;
   color: black;
-  text-align: right;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
+  font-size: 1.2rem;
+  text-align: center;
   flex-shrink: 0;
 }
+
+.book-box__quantity-text {
+  font-size: 1.2rem; 
+  margin: 0 0.5rem; 
+}
+
+.book-box__decrement-icon,
+.book-box__increment-icon {
+  font-size: 1.5rem; 
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.book-box__decrement-icon:hover,
+.book-box__increment-icon:hover {
+  color: #888;
+}
+
 
 .book-box__book-info {
   display: flex;

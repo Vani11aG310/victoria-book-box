@@ -61,7 +61,7 @@ const BookBox = () => {
                       className="book-box__decrement-icon" 
                       onClick={(event) => handleDecrement(event, collection.id)} 
                     />
-                    <span>Quantity: {collection.quantity}</span>
+                    <span className="book-box__quantity-text">Quantity: {collection.quantity}</span>
                     <FaPlusCircle 
                       className="book-box__increment-icon" 
                       onClick={(event) => handleIncrement(event, collection.id)} 
