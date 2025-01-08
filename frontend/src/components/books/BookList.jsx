@@ -8,28 +8,27 @@ import usePageTitle from "../../hooks/usePageTitle";
 import BooklistItem from "./BooklistItem";
 
 const BookList = () => {
-  const [searchValue, setSearchValue] = useState("");
   const state = useContext(StateContext);
-  const [bookList, setBooklist] = useState(state.bookData);
+  const [filteredBooklist, setFilteredBooklist] = useState(null);
+  const bookList = filteredBooklist ? filteredBooklist : state.bookData;
   const dispatch = useContext(DispatchContext);
   usePageTitle("Books", dispatch);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const query = event.target.search.value;
-    setSearchValue(query);
-    const filteredBooks = bookList.filter((book) => {
-      if (book.title.toLowerCase().includes(searchValue.toLowerCase())) {
-        return book.title.toLowerCase().includes(searchValue.toLowerCase());;
+    const filteredBooks = query ? bookList.filter((book) => {
+      if (book.title.toLowerCase().includes(query.toLowerCase())) {
+        return book.title.toLowerCase().includes(query.toLowerCase());;
       }
-      if (book.author.toLowerCase().includes(searchValue.toLowerCase())) {
-        return book.author.toLowerCase().includes(searchValue.toLowerCase());
+      if (book.author.toLowerCase().includes(query.toLowerCase())) {
+        return book.author.toLowerCase().includes(query.toLowerCase());
       }
-      if (book.subject.toLowerCase().includes(searchValue.toLowerCase())) {
-        return book.subject.toLowerCase().includes(searchValue.toLowerCase());
+      if (book.subject.toLowerCase().includes(query.toLowerCase())) {
+        return book.subject.toLowerCase().includes(query.toLowerCase());
       }
-    });
-    setBooklist(filteredBooks);
+    }) : state.bookData;
+    setFilteredBooklist(filteredBooks);
   }
     
   return (
@@ -46,15 +45,13 @@ const BookList = () => {
             <FaSearch className="search__submit-icon" />
           </button>
       </form>
-      {bookList.length > 0 ? (
-        <ul className="booklist">
-          {bookList.map((book) => (
-            <BooklistItem key={book.id} booklistItem={book} />
-          ))}
-        </ul>
-      ) : (
-        <p>Loading books...</p>
-      )}
+      
+      {Array.isArray(bookList) && <ul className="booklist">
+        {bookList.map((book) => (
+          <BooklistItem key={book.id} booklistItem={book} />
+        ))}
+      </ul>}
+      
     </div>
   );
 }
