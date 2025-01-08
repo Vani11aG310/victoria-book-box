@@ -5,13 +5,17 @@ import StateContext from '../../context/StateContext';
 import DispatchContext from "../../context/DispatchContext";
 import useCollections from "../../hooks/useCollections";
 import usePageTitle from "../../hooks/usePageTitle";
-import { FaPlusCircle } from "react-icons/fa";
+import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import useDecrement from "../../hooks/useDecrement";
+import useIncrement from "../../hooks/useIncrement";
 
 const BookBox = () => {
   const { id } = useParams();
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+
+ 
 
   const bookBox = state.bookBoxes.find(box => box.id === parseInt(id));
 
@@ -20,6 +24,19 @@ const BookBox = () => {
 
 
   useCollections(id, dispatch);
+  const increment = useIncrement();
+  const decrement = useDecrement();
+
+  const handleIncrement = (event, collectionId) => {
+    event.preventDefault();
+    increment(collectionId); 
+  };
+
+  const handleDecrement = (event, collectionId) => {
+    event.preventDefault();
+    decrement(collectionId); 
+  };
+ 
   return (
     <div className="book-box">
       {bookBox ? (
@@ -33,14 +50,23 @@ const BookBox = () => {
             {state.collections && state.collections.length > 0 ? (
               state.collections.map((collection) => (
                 <li key={collection.id} className="book-box__collection-item">
-                  <img className="book-box__book-cover" src={collection.book.cover_url} alt={`Cover picture of ${collection.book.title}`} />
+                  <img className="book-box__book-cover" src={collection.book.cover_url} alt={`Cover of ${collection.book.title}`} />
                   <div className="book-box__book-info">
                     <p className="book-box__book-title">{collection.book.title}</p>
                     <p className="book-box__book-author">By: {collection.book.author}</p>
                     <p className="book-box__book-subject">Subject: {collection.book.subject}</p>
                   </div>
-
-                  <p className="book-box__quantity">Quantity: {collection.quantity}</p>
+                  <div className="book-box__quantity">
+                    <FaMinusCircle 
+                      className="book-box__decrement-icon" 
+                      onClick={(event) => handleDecrement(event, collection.id)} 
+                    />
+                    <span>Quantity: {collection.quantity}</span>
+                    <FaPlusCircle 
+                      className="book-box__increment-icon" 
+                      onClick={(event) => handleIncrement(event, collection.id)} 
+                    />
+                  </div>
 
                 </li>
               ))

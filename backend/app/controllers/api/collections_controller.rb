@@ -46,7 +46,7 @@ class Api::CollectionsController < ApplicationController
 
   # PATCH/PUT /collections/1
   def update
-    if @collection.update(collection_params)
+    if @collection.update(quantity: params[:quantity])
       render json: @collection
     else
       render json: @collection.errors, status: :unprocessable_entity
