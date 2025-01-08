@@ -92,6 +92,12 @@ Collection.find_or_create_by!(book: book30, book_box: book_box_3, quantity: 3)
 
 # WISHLISTS
 puts "Wishlists"
+Wishlist.find_or_create_by!(user: user1, book: book1)
+Wishlist.find_or_create_by!(user: user1, book: book2)
+
+Wishlist.find_or_create_by!(user: user2, book: book1)
+Wishlist.find_or_create_by!(user: user2, book: book2)
+
 Wishlist.find_or_create_by!(user: user3, book: book1)
 Wishlist.find_or_create_by!(user: user3, book: book2)
 Wishlist.find_or_create_by!(user: user3, book: book3)

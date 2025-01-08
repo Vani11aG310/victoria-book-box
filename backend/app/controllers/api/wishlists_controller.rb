@@ -39,9 +39,12 @@ class Api::WishlistsController < ApplicationController
 
   # POST /wishlists
   def create
+    user_id = wishlist_params[:user_id]
     book_id = wishlist_params[:book_id]
 
+    # Is the BookId supplied as parameter?
     unless book_id
+      # Does the book already exist in the database using the Open Library Key.
       book = Book.find_by(open_library_key: wishlist_params[:open_library_key])
 
       unless book
@@ -57,22 +60,30 @@ class Api::WishlistsController < ApplicationController
       book_id = book.id
     end
 
-    @wishlist = Wishlist.new(wishlist_params.except(:title, :author, :subject, :open_library_key, :open_library_cover_key).merge(book_id: book_id))
+    # Check if the combination of UserId and BookId already exist.
+    @wishlist = Wishlist.find_by(user_id:user_id, book_id:book_id)
 
-    if @wishlist.save
-      render json: @wishlist.as_json(include: {
-        user: {}, 
-        book: {}
-        }).merge(
-          book: @wishlist.book.as_json.merge(
-            cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
-            open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
-          )
-        ),
-        status: :created
-    else
-      render json: @wishlist.errors, status: :unprocessable_entity
+    unless @wishlist
+      @wishlist = Wishlist.new(wishlist_params.except(:title, :author, :subject, :open_library_key, :open_library_cover_key).merge(book_id: book_id))
+
+      if @wishlist.save
+        # Success. Response sent below.
+      else
+        render json: @wishlist.errors, status: :unprocessable_entity
+        return
+      end
     end
+
+    render json: @wishlist.as_json(include: {
+      user: {}, 
+      book: {}
+      }).merge(
+        book: @wishlist.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{@wishlist.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{@wishlist.book.open_library_key}"
+        )
+      ),
+      status: :created
   end
 
   # PATCH/PUT /wishlists/1
