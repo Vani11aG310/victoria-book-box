@@ -47,6 +47,6 @@ class Api::BookBoxesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def book_box_params
-    params.require(:book_box).permit(:name, :address, :latitude, :longitude)
+    params.require(:book_box).permit(:name, :address)
   end
 end
