@@ -12,7 +12,7 @@ class BookBoxesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create book_box" do
     assert_difference("BookBox.count") do
-      post book_boxes_url, params: { book_box: { address: @book_box.address, latitude: @book_box.latitude, longitude: @book_box.longitude, name: @book_box.name } }, as: :json
+      post book_boxes_url, params: { book_box: { address: @book_box.address, name: @book_box.name } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class BookBoxesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update book_box" do
-    patch book_box_url(@book_box), params: { book_box: { address: @book_box.address, latitude: @book_box.latitude, longitude: @book_box.longitude, name: @book_box.name } }, as: :json
+    patch book_box_url(@book_box), params: { book_box: { address: @book_box.address, name: @book_box.name } }, as: :json
     assert_response :success
   end
 

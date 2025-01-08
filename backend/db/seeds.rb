@@ -51,9 +51,9 @@ book30 = Book.find_or_create_by!(title: "Fahrenheit 451", author: "Ray Bradbury"
 
 # BOOK BOXES
 puts "Book Boxes"
-book_box_1 = BookBox.find_or_create_by!(name: "Empress Hotel", address: "721 Government St", latitude: 48.42205963102805, longitude: -123.36793550445304)
-book_box_2 = BookBox.find_or_create_by!(name: "Beacon Hill Park", address: "Dallas Road", latitude: 48.409446622640814, longitude: -123.36043792863524)
-book_box_3 = BookBox.find_or_create_by!(name: "Topax Park", address: "Finlayson St & Yew St", latitude: 48.44529670499731, longitude: -123.36444316714491)
+book_box_1 = BookBox.find_or_create_by!(name: "Empress Hotel", address: "721 Government St")
+book_box_2 = BookBox.find_or_create_by!(name: "Beacon Hill Park", address: "Dallas Road")
+book_box_3 = BookBox.find_or_create_by!(name: "Topax Park", address: "Finlayson St & Yew St")
 
 
 # COLLECTIONS
