@@ -14,7 +14,7 @@ const Book = () => {
       <h3 className="book__author">By: {bookDetails.author}</h3>
       <img src={bookDetails.cover_url} alt="book cover" className="book__cover" />
       <h3>Book Summary:</h3>
-      <p>{bookDetails.book_description}</p>
+      {bookDetails.book_description ? <p>{bookDetails.book_description}</p> : <p>No summary available</p>}
       <h3>Book Available At:</h3>
       <ul className="book__info-list">
         <Link to={`/book-boxes/${collection[0].book_box.id}`} >
