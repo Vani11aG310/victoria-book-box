@@ -12,8 +12,8 @@ const Book = () => {
     <div>
       <h2 className="book__title">{bookDetails.title}</h2>
       <h3 className="book__author">By: {bookDetails.author}</h3>
+      <h3 className="book__author">Subject: {bookDetails.subject} </h3>
       <img src={bookDetails.cover_url} alt="book cover" className="book__cover" />
-      <h3>Book Summary:</h3>
       {bookDetails.book_description ? <p>{bookDetails.book_description}</p> : <p>No summary available</p>}
       <h3>Book Available At:</h3>
       <ul className="book__info-list">
