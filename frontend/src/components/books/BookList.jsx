@@ -17,7 +17,7 @@ const BookList = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const query = event.target.search.value;
-    const filteredBooks = query ? bookList.filter((book) => {
+    const filteredBooks = query ? state.bookData.filter((book) => {
       if (book.title.toLowerCase().includes(query.toLowerCase())) {
         return book.title.toLowerCase().includes(query.toLowerCase());;
       }
