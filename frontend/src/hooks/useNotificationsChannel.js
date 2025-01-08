@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createConsumer } from "@rails/actioncable";
 
-const useNotificationsChannel = (userId) => {
+const useNotificationsChannel = (userId, setNotifications) => {
 
   useEffect(() => {
     const consumer = createConsumer("ws://localhost:3001/cable");
@@ -20,6 +20,7 @@ const useNotificationsChannel = (userId) => {
         },
         received(data) {
           console.log("*** Received data:", data);
+          setNotifications((prev) => [...prev, {id: data.id, message: data.message}]);
         }
       }
     );

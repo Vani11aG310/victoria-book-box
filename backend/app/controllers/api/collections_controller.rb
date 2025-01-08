@@ -83,8 +83,14 @@ class Api::CollectionsController < ApplicationController
         message = "#{book[:title]} is ready at the #{book_box[:name]} (#{book_box[:address]}) Book Box."
         ActionCable.server.broadcast(
           channel,
-          {message: message}
-          )
+          {
+          message: message,
+          id: @collection[:id],
+          book_title: book[:title],
+          book_box_name: book_box[:name],
+          book_box_address: book_box[:address]
+          }
+        )
       end
     end
 end

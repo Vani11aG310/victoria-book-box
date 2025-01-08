@@ -2,6 +2,7 @@ import "./App.scss";
 import { Routes, Route } from 'react-router-dom';
 import Header from "./components/navigation/Header";
 import Footer from "./components/navigation/Footer";
+import Notification from "./components/notification/Notification";
 import BookList from "./components/books/BookList";
 import BookSearch from "./components/books/BookSearch";
 import Book from "./components/books/Book";
@@ -15,7 +16,6 @@ import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
 import useWishlistDataFetch from './hooks/useWishlistDataFetch';
 import useUserData from './hooks/useUserData';
-import useNotificationsChannel from './hooks/useNotificationsChannel';
 
 function App() {
   // Custom Hook to manage the Application's State.
@@ -29,15 +29,13 @@ function App() {
   // Custom Hook to fetch the Wishlist Data for the User.
   useWishlistDataFetch(userId, dispatch);
 
-  // Custom Hook to set up Notifications Channel with Rails backend.
-  useNotificationsChannel(userId);
-
   return (
     <div className="App">
       <DispatchContext.Provider value={dispatch}>
         <StateContext.Provider value={state}>
           <Header />
           <div className="main-content">
+            <Notification />
             <Routes>
               <Route path="/" element={<BookList />} />
               <Route path="/books" element={<BookList />} />
