@@ -15,7 +15,7 @@ const BookBox = () => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
- 
+
 
   const bookBox = state.bookBoxes.find(box => box.id === parseInt(id));
 
@@ -23,20 +23,23 @@ const BookBox = () => {
   usePageTitle(bookBox.name, dispatch);
 
 
-  useCollections(id, dispatch);
+  useCollections(dispatch, id);
   const increment = useIncrement();
   const decrement = useDecrement();
 
+
+
+
   const handleIncrement = (event, collectionId) => {
     event.preventDefault();
-    increment(collectionId); 
+    increment(collectionId);
   };
 
   const handleDecrement = (event, collectionId) => {
     event.preventDefault();
-    decrement(collectionId); 
+    decrement(collectionId);
   };
- 
+
   return (
     <div className="book-box">
       {bookBox ? (
@@ -57,14 +60,14 @@ const BookBox = () => {
                     <p className="book-box__book-subject">Subject: {collection.book.subject}</p>
                   </div>
                   <div className="book-box__quantity">
-                    <FaMinusCircle 
-                      className="book-box__decrement-icon" 
-                      onClick={(event) => handleDecrement(event, collection.id)} 
+                    <FaMinusCircle
+                      className="book-box__decrement-icon"
+                      onClick={(event) => handleDecrement(event, collection.id)}
                     />
                     <span className="book-box__quantity-text">Quantity: {collection.quantity}</span>
-                    <FaPlusCircle 
-                      className="book-box__increment-icon" 
-                      onClick={(event) => handleIncrement(event, collection.id)} 
+                    <FaPlusCircle
+                      className="book-box__increment-icon"
+                      onClick={(event) => handleIncrement(event, collection.id)}
                     />
                   </div>
 
@@ -79,9 +82,9 @@ const BookBox = () => {
         <p>Loading book box details...</p>
       )}
       <Link to='/books/search'>
-        <div className="book-box__fab"> 
-        <FaPlusCircle className="book-box__add-icon"  />
-      </div>
+        <div className="book-box__fab">
+          <FaPlusCircle className="book-box__add-icon" />
+        </div>
       </Link>
     </div>
   );

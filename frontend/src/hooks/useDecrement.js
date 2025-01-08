@@ -20,7 +20,7 @@ const useDecrement = () => {
       const updatedQuantity = updatedCollection.quantity - 1;
 
       if (updatedQuantity === 0) {
-        // Delete collection if quantity reaches zero
+       
         await axios.delete(`http://localhost:3001/api/collections/${collectionId}`);
 
         const updatedCollections = state.collections.filter(
