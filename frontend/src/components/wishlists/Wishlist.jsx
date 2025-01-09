@@ -10,7 +10,7 @@ import usePageTitle from "../../hooks/usePageTitle";
 const Wishlist = () => {
   const state = useContext(StateContext);
   const wishlistData = [...state.wishlistData];
-  const userName = state.user.name;
+  const userName = state.userData.name;
   const dispatch = useContext(DispatchContext);
   const {pathname} = useLocation();
   const navigate = useNavigate();

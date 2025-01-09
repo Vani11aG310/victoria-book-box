@@ -8,21 +8,22 @@ import { ACTIONS } from "../../reducers/dataReducer";
 
 const Login = () => {
   const state = useContext(StateContext);
-  const currentUserId = state.user.id || undefined;
+  const currentUserId = state.userData.id || undefined;
 
-  console.log("*** Current User:", currentUserId)
+  // console.log("***User", state.userData)
+
+  // console.log("*** Current User:", currentUserId)
   const [userId, setUserId] = useState(currentUserId);
-  const [users, setUsers] = useState([]);
   
-    const dispatch = useContext(DispatchContext);
+  const dispatch = useContext(DispatchContext);
   usePageTitle("Login", dispatch);
   
   // Custom hook to fetch the list of Users.
-  useUsersDataFetch(setUsers);
+  const { users, loading, error } = useUsersDataFetch();
   
-  useEffect(() => {
-    setUserId(currentUserId);
-  }, [currentUserId]);
+  // useEffect(() => {
+  //   setUserId(currentUserId);
+  // }, [currentUserId]);
 
   const handleUserIdChange = (event) => {
     setUserId(event.target.value);
@@ -34,12 +35,13 @@ const Login = () => {
     setUserId(newUserId);
 
     // Update the global state with the new User.
-    const user = users.find((user) => user.id = newUserId);
-    console.log("***New User:", user)
-    dispatch({
-      type: ACTIONS.SET_USER,
-      payload: user,
-    })
+    console.log("***New User ID:", newUserId)
+    const newUser = users.find((user) => user.id = newUserId);
+    console.log("***New User:", newUser)
+    // dispatch({
+    //   type: ACTIONS.SET_USER,
+    //   payload: user,
+    // })
   }
 
   return (

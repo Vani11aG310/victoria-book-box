@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useUsersDataFetch = (setUsers) => {
+const useUsersDataFetch = () => {
+  const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  let users = [];
 
   useEffect(() => {
+    setUsers(null);
     setLoading(true);
     setError(null);
 
@@ -14,7 +15,6 @@ const useUsersDataFetch = (setUsers) => {
       .then((res) => {
         setLoading(false);
         setUsers(res.data);
-        users = res.data;
       })
       .catch((err) => {
         setLoading(false);

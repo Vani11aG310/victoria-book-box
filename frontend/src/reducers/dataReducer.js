@@ -21,9 +21,10 @@ const dataReducer = (state, action) => {
     }
     
     case ACTIONS.SET_USER: {
+      console.log("***Actions", action.payload);
       return {
         ...state,
-        user: action.payload,
+        userData: action.payload,
       };
     }
 

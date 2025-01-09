@@ -6,7 +6,7 @@ import useNotificationsChannel from '../../hooks/useNotificationsChannel';
 
 const Notification = () => {
   const state = useContext(StateContext);
-  const userId = state.user.id;
+  const userId = state.userData.id;
   const [notifications, setNotifications] = useState([]);
 
    // Custom Hook to set up Notifications Channel with Rails backend.
