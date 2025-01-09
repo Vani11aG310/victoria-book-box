@@ -3,8 +3,8 @@ import dataReducer from '../reducers/dataReducer';
 
 const useApplicationData = () => {
   const initialState = {
-    userId: null,
     pageTitle: null,
+    user:{},
     bookData: [],
     bookBoxesData: [],
     wishlistData: [],
