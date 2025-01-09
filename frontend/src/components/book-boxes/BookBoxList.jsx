@@ -11,9 +11,10 @@ import { FaPlusCircle } from "react-icons/fa";
 const BookBoxList = () => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  
   usePageTitle("Book Boxes", dispatch);
-  useCollections(dispatch);
-
+  // useCollections(dispatch);
+  
   const [totalQuantities, setTotalQuantities] = useState({});
 
   // Calculate total quantities for each book box
@@ -43,14 +44,17 @@ const BookBoxList = () => {
       <ul className="book-boxes__items">
         {state.bookBoxes ? (
           state.bookBoxes.map((bookBox) => (
+            <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox, collections: state.collections}}className="book-boxes__link" key={bookBox.id}>
+              <li className="book-boxes__item">
+                <div className="book-boxes__content">
+                  <span className="book-boxes__name">{bookBox.name}</span>
+                  <p>{bookBox.address}</p>
+                  <p>Books: {totalQuantities[bookBox.id] || 0}</p>
+                </div>
+              </li>
+            </Link>
 
-            <li key={bookBox.id} className="book-boxes__item">
-              <Link to={`/book-boxes/${bookBox.id}`} className="book-boxes__link">
-                <span className="book-boxes__name">{bookBox.name}</span>
-              </Link>
-              <p>{bookBox.address}</p>
-              <p>Books: {totalQuantities[bookBox.id] || 0}</p>
-            </li>
+
           ))
         ) : (
           <p>Loading book boxes...</p>

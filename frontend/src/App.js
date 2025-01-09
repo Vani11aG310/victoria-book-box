@@ -21,6 +21,7 @@ import useCollections from "./hooks/useCollections";
 import useBooklistDataFetch from "./hooks/useBooklistDataFetch";
 
 
+
 function App() {
   // Custom Hook to manage the Application's State.
   const { state, dispatch } = useApplicationData();
@@ -36,6 +37,7 @@ function App() {
 
   //Book Boxes
   useBookBoxes(dispatch);
+  useCollections(dispatch);
   
   // Custom Hook to fetch the Booklist Data.
   useBooklistDataFetch(dispatch);

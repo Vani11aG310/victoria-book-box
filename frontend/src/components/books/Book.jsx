@@ -5,6 +5,8 @@ const Book = () => {
   const location = useLocation();
 
   const { collection, bookDetails } = location.state;
+
+  
     
   return (
     <div>
@@ -15,11 +17,11 @@ const Book = () => {
       {bookDetails.book_description ? <p>{bookDetails.book_description}</p> : <p>No summary available</p>}
       <h3>Book Available At:</h3>
       <ul className="book__info-list">
-        <Link to={`/book-boxes/${collection[0].book_box.id}`} >
+        {/* <Link to={`/book-boxes/${collection[0].book_box.id}`} >
         {Array.isArray(collection) && collection.map((item) => (
           <h4 key={item.book.id}>{item.book_box.name}, {item.book_box.address}</h4>
         ))}
-        </Link>
+        </Link> */}
       </ul>
     </div>
   );
