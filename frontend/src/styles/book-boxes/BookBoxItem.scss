@@ -1,0 +1,114 @@
+.book-box__collection-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  background-color: lightgray;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-box__collection-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-box__quantity {
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.book-box__quantity-text {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+}
+
+.book-box__decrement-icon,
+.book-box__increment-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.book-box__decrement-icon:hover,
+.book-box__increment-icon:hover {
+  color: #888;
+}
+
+.book-box__book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.book-box__book-title,
+.book-box__book-author,
+.book-box__book-subject {
+  margin: 0.25rem 0;
+}
+
+.book-box__book-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.book-box__book-author,
+.book-box__book-subject {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+
+  .book-box__collection-item {
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 1rem 0; 
+  }
+
+  .book-box__quantity {
+    flex-direction: row; 
+    gap: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+  }
+
+  .book-box__book-info {
+    padding-top: 1rem;
+  }
+
+  .book-box__book-title,
+  .book-box__book-author,
+  .book-box__book-subject {
+    font-size: 1rem; 
+  }
+}
+
+@media (max-width: 480px) {
+
+  .book-box__book-cover {
+    height: 70px; 
+  }
+
+  .book-box__book-title {
+    font-size: 0.95rem;
+  }
+
+  .book-box__book-author,
+  .book-box__book-subject {
+    font-size: 0.9rem;
+  }
+
+  .book-box__quantity-text {
+    font-size: 1rem;
+  }
+}

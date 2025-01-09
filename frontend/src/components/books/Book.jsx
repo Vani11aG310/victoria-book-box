@@ -20,7 +20,6 @@ const Book = () => {
     axios.get(`http://localhost:3001/api/collections?book_id=${bookId}`)
     .then((res) => {
       setCollection(res.data);
-      console.log(res.data)
       axios.get(`http://localhost:3001/api/books/${bookId}`)
       .then((res) => {
         setBookDetails(res.data);

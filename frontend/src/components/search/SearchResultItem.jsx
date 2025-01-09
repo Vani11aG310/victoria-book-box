@@ -6,6 +6,7 @@ import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
 import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
 import collectionDataCreate from "../../db/collections/collectionDataCreate";
+import { Link } from "react-router-dom";
 
 const SearchResultItem = (props) => {
   const { book, mode, boxId } = props;
@@ -64,7 +65,9 @@ const SearchResultItem = (props) => {
         <p className="search-result__book-subject">Subject: <strong>{book.subject && book.subject[0]}</strong></p>
       </div>
       {mode === 'books' && <div className="search-result__add-button">
-        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
+        <Link to={{pathname: `/book-boxes/${boxId}`}}>
+          <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
+        </Link>
       </div>}
       {mode === 'wishlists' && <div className="search-result__heart-button">
         {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={() => handleDelete()} />}
