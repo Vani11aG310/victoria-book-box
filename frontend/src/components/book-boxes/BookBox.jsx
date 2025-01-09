@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import StateContext from '../../context/StateContext';
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
-import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import { FaPlusCircle } from "react-icons/fa";
 import { Link, useLocation } from 'react-router-dom';
 import BookBoxItem from "./BookBoxItem";
 

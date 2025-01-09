@@ -1,40 +1,3 @@
-.book-box {
-  margin: 2rem;
-  padding: 2rem;
-  background-color: dimgray;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 100%; 
-}
-
-.book-box__header {
-  margin-bottom: 1.5rem;
-}
-
-.book-box__title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: black;
-}
-
-.book-box__book-cover {
-  height: 100px;
-  width: auto;
-  margin-right: 1rem;
-  border-radius: 8px;
-}
-
-.book-box__address {
-  font-size: 1.1rem;
-  color: black;
-}
-
-.book-box__collections {
-  list-style: none;
-  padding: 0;
-}
-
 .book-box__collection-item {
   display: flex;
   justify-content: space-between;
@@ -103,58 +66,7 @@
   font-size: 1rem;
 }
 
-.book-box__fab {
-  position: fixed;
-  width: 2.5rem;
-  height: 2.5rem;
-  bottom: 4.5rem;
-  right: 1.5rem;
-  background-color: dimgray;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  z-index: 9999;
-}
-
-.book-box__fab:hover {
-  background-color: #444444;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-}
-
-.book-box__add-icon {
-  font-size: 1.5rem;
-}
-
-
 @media (max-width: 768px) {
-  
-  .book-box {
-    margin: 1rem;
-    padding: 1rem;
-  }
-
-  .book-box__title {
-    font-size: 1.6rem; 
-  }
-
-  .book-box__book-cover {
-    height: 80px; 
-    margin-right: 0.75rem;
-  }
-
-  .book-box__address {
-    font-size: 1rem;
-  }
-
-  .book-box__collections {
-    padding: 0;
-  }
 
   .book-box__collection-item {
     flex-direction: column; 
@@ -170,17 +82,6 @@
     text-align: left;
   }
 
-  .book-box__fab {
-    width: 3rem;
-    height: 3rem;
-    bottom: 4.5rem;
-  }
-
-  .book-box__add-icon {
-    font-size: 1.8rem;
-  }
-
-  
   .book-box__book-info {
     padding-top: 1rem;
   }
@@ -193,22 +94,9 @@
 }
 
 @media (max-width: 480px) {
-  
-  .book-box {
-    margin: 0.5rem;
-    padding: 1rem;
-  }
-
-  .book-box__title {
-    font-size: 1.4rem; 
-  }
 
   .book-box__book-cover {
     height: 70px; 
-  }
-
-  .book-box__address {
-    font-size: 0.9rem;
   }
 
   .book-box__book-title {
@@ -223,16 +111,4 @@
   .book-box__quantity-text {
     font-size: 1rem;
   }
-  .book-box__fab {
-    width: 2.5rem;  
-    height: 2.5rem;
-    bottom: 4.5rem;  
-   
-    z-index: 9999;  
-  }
-
-  .book-box__add-icon {
-    font-size: 1.5rem; 
-  }
-
 }
