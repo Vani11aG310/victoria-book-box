@@ -5,6 +5,7 @@
   border: 1px solid lightgray;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%; 
 }
 
 .book-box__header {
@@ -34,75 +35,6 @@
   padding: 0;
 }
 
-.book-box__collection-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border-radius: 8px;
-  background-color: lightgray;
-  color: black;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.book-box__collection-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.book-box__quantity {
-  font-weight: bold;
-  color: black;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
-  gap: 0.5rem; 
-  font-size: 1.2rem;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.book-box__quantity-text {
-  font-size: 1.2rem; 
-  margin: 0 0.5rem; 
-}
-
-.book-box__decrement-icon,
-.book-box__increment-icon {
-  font-size: 1.5rem; 
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.book-box__decrement-icon:hover,
-.book-box__increment-icon:hover {
-  color: #888;
-}
-
-
-.book-box__book-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.book-box__book-title,
-.book-box__book-author,
-.book-box__book-subject {
-  margin: 0.25rem 0;
-}
-
-.book-box__book-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.book-box__book-author,
-.book-box__book-subject {
-  font-size: 1rem;
-}
-
 .book-box__fab {
   position: fixed;
   width: 2.5rem;
@@ -119,6 +51,7 @@
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
+  z-index: 9999;
 }
 
 .book-box__fab:hover {
@@ -128,4 +61,64 @@
 
 .book-box__add-icon {
   font-size: 1.5rem;
+}
+
+
+@media (max-width: 768px) {
+  
+  .book-box {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .book-box__title {
+    font-size: 1.6rem; 
+  }
+
+
+  .book-box__address {
+    font-size: 1rem;
+  }
+
+  .book-box__collections {
+    padding: 0;
+  }
+
+  .book-box__fab {
+    width: 3rem;
+    height: 3rem;
+    bottom: 4.5rem;
+  }
+
+  .book-box__add-icon {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  
+  .book-box {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+
+  .book-box__title {
+    font-size: 1.4rem; 
+  }
+
+  .book-box__address {
+    font-size: 0.9rem;
+  }
+
+  .book-box__fab {
+    width: 2.5rem;  
+    height: 2.5rem;
+    bottom: 4.5rem;  
+    z-index: 9999;  
+  }
+
+  .book-box__add-icon {
+    font-size: 1.5rem; 
+  }
+
 }
