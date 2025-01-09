@@ -81,7 +81,7 @@ const BookBox = () => {
       ) : (
         <p>Loading book box details...</p>
       )}
-      <Link to='/books/search'>
+      <Link to='/books/search' state={{ boxId: bookBox.id}}>
         <div className="book-box__fab">
           <FaPlusCircle className="book-box__add-icon" />
         </div>

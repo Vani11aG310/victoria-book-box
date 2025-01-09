@@ -21,7 +21,6 @@ const wishlistDataCreate = (wishlist, dispatch) => {
       });
     })
     .catch((err) => {
-      console.log("*** Request: ", wishlist);
       error = err.message ;
       console.error("Error: ", err.message);
     });

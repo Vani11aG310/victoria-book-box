@@ -5,9 +5,10 @@ import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
 import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
+import collectionDataCreate from "../../db/collections/collectionDataCreate";
 
 const SearchResultItem = (props) => {
-  const { book } = props;
+  const { book, mode, boxId } = props;
   book.cover_url = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg`;
 
   const state = useContext(StateContext);
@@ -18,7 +19,7 @@ const SearchResultItem = (props) => {
   // Is the book already included in the wishlist?
   const wishlistItem = state.wishlistData.find((wishlistItem) => wishlistItem.book.open_library_key === book.key);
 
-  const handleAdd = () => {
+  const handleAddToWishlist = () => {
     wishListDataCreate({
       userId,
       book: {
@@ -33,6 +34,23 @@ const SearchResultItem = (props) => {
     );
   }
 
+  const handleAddToCollection = () => {
+
+    /// Add book to collection
+    collectionDataCreate({
+      bookBoxId: boxId,
+      book: {
+        title: book.title,
+        author: book.author_name && book.author_name[0],
+        subject: book.subject && book.subject[0],
+        openLibraryKey: book.key,
+        openLibraryCoverKey: book.cover_edition_key,
+      }
+    }, dispatch
+    );
+
+  }
+
   const handleDelete = () => {
     wishListDataDelete(wishlistItem.id, dispatch);
   }
@@ -44,16 +62,14 @@ const SearchResultItem = (props) => {
         <p className="search-result__book-title"><strong>{book.title}</strong></p>
         <p className="search-result__book-author">By: <strong>{book.author_name && book.author_name[0]}</strong></p>
         <p className="search-result__book-subject">Subject: <strong>{book.subject && book.subject[0]}</strong></p>
-        {/* <p className="search-result__book-open-library-key">Key: <strong>{book.key}</strong></p> */}
-        {/* <p className="search-result__book-open-library-cover-key">Cover Key: <strong>{book.cover_edition_key}</strong></p> */}
       </div>
-      {/* <div className="search-result__add-button"> */}
-      {/* <FaPlusCircle className="search-result__add-icon" onClick={() => handleAdd()} /> */}
-      {/* </div> */}
-      <div className="search-result__heart-button">
+      {mode === 'books' && <div className="search-result__add-button">
+        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
+      </div>}
+      {mode === 'wishlists' && <div className="search-result__heart-button">
         {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={() => handleDelete()} />}
-        {!wishlistItem && <FaRegHeart className="search-result__reg-heart-icon" onClick={() => handleAdd()} />}
-      </div>
+        {!wishlistItem && <FaRegHeart className="search-result__reg-heart-icon" onClick={() => handleAddToWishlist()} />}
+      </div>}
     </div>
   );
 }

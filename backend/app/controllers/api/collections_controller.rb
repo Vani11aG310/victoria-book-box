@@ -37,14 +37,51 @@ class Api::CollectionsController < ApplicationController
 
   # POST /collections
   def create
-    @collection = Collection.new(collection_params)
+    book_box_id = collection_params[:book_box_id]
+    book_id = collection_params[:book_id]
 
-    if @collection.save
-      render json: @collection, status: :created
-      send_notification
-    else
-      render json: @collection.errors, status: :unprocessable_entity
+    # Is the BookId supplied as parameter?
+    unless book_id
+      # Does the book already exist in the database using the Open Library Key.
+      book = Book.find_by(open_library_key: collection_params[:open_library_key])
+
+      unless book
+        book = Book.create(
+          title: collection_params[:title],
+          author: collection_params[:author],
+          subject: collection_params[:subject],
+          open_library_key: collection_params[:open_library_key],
+          open_library_cover_key: collection_params[:open_library_cover_key]
+        )
+      end
+
+      book_id = book.id
     end
+
+    # Check if the combination of CollectionId and BookId already exist.
+    @collection = Collection.find_by(book_box_id:book_box_id, book_id:book_id)
+
+    unless @collection
+      @collection = Collection.new(collection_params.except(:title, :author, :subject, :open_library_key, :open_library_cover_key).merge(book_id: book_id))
+
+      if @collection.save
+        # Success. Response sent below.
+      else
+        render json: @collection.errors, status: :unprocessable_entity
+        return
+      end
+    end
+
+    render json: @collection.as_json(include: {
+      book_box: {}, 
+      book: {}
+      }).merge(
+        book: @collection.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{@collection.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{@collection.book.open_library_key}"
+        )
+      ),
+      status: :created
   end
 
   # PATCH/PUT /collections/1
@@ -70,7 +107,7 @@ class Api::CollectionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def collection_params
-    params.require(:collection).permit(:quantity, :book_id, :book_box_id)
+    params.require(:collection).permit(:quantity, :book_id, :book_box_id, :title, :author, :subject, :open_library_key, :open_library_cover_key)
   end
 
   # Send Notifications to the users that have the Book on their Wishlist.

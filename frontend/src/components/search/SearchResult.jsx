@@ -3,7 +3,7 @@ import SearchResultItem from "./SearchResultItem";
 import useSearchOpenLibrary from "../../hooks/useSearchOpenLibrary";
 
 const SearchResult = (props) => {
-  const { searchValue } = props;
+  const { searchValue, mode, boxId } = props;
 
   // Use the custom hook to search Open Library for books by title or author.
   const { books, loading, error } = useSearchOpenLibrary(searchValue);
@@ -15,7 +15,7 @@ const SearchResult = (props) => {
 
       <ul className="search-result">
         {Array.isArray(books) && books.map((book) => {
-          return <SearchResultItem key={book.key} book={book} />;
+          return <SearchResultItem key={book.key} book={book} mode={mode} boxId={boxId}/>;
         })}
       </ul>
     </div>
