@@ -51,7 +51,7 @@ function App() {
             <Routes>
               <Route path="/" element={<BookList />} />
               <Route path="/books" element={<BookList />} />
-              <Route path="/books/search" element={<BookSearch />} />
+              <Route path="/books/search" element={<Search mode={'books'}/>} />
               <Route path="/books/:id" element={<Book />} />
 
               <Route path="/book-boxes" element={<BookBoxList />} />
@@ -59,7 +59,7 @@ function App() {
               <Route path="/book-boxes/:id" element={<BookBox />} />
 
               <Route path="/wishlists" element={<Wishlist />} />
-              <Route path="/wishlists/search" element={<Search />} />
+              <Route path="/wishlists/search" element={<Search mode={'wishlists'}/>} />
               <Route path="*" element={<h1>404 - Not Found</h1>} />
             </Routes>
           </div>
