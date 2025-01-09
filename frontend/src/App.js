@@ -11,13 +11,13 @@ import BookBoxCreate from "./components/book-boxes/BookBoxCreate";
 import BookBox from "./components/book-boxes/BookBox";
 import Wishlist from "./components/wishlists/Wishlist";
 import Search from "./components/search/Search";
+import Login from "./components/login/Login";
 import StateContext from "./context/StateContext";
 import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
 import useWishlistDataFetch from './hooks/useWishlistDataFetch';
 import useUserData from './hooks/useUserData';
 import useBookBoxes from "./hooks/useBookBoxes";
-import useCollections from "./hooks/useCollections";
 import useBooklistDataFetch from "./hooks/useBooklistDataFetch";
 
 
@@ -30,16 +30,15 @@ function App() {
   const userId = Number(process.env.REACT_APP_USER_ID)
   useUserData(userId, dispatch);
 
-  // Custom Hook to fetch the Wishlist Data for the User.
-  useWishlistDataFetch(userId, dispatch);
-
-
-  //Book Boxes
-  useBookBoxes(dispatch);
-  
   // Custom Hook to fetch the Booklist Data.
   useBooklistDataFetch(dispatch);
 
+  // Custom Hook to fetch the Wishlist Data for the User.
+  useWishlistDataFetch(userId, dispatch);
+
+  // Custom Hook to fetch the Book Boxes.
+  useBookBoxes(dispatch);
+  
 
   return (
     <div className="App">
@@ -60,6 +59,9 @@ function App() {
 
               <Route path="/wishlists" element={<Wishlist />} />
               <Route path="/wishlists/search" element={<Search />} />
+              
+              <Route path="/login" element={<Login />} />
+
               <Route path="*" element={<h1>404 - Not Found</h1>} />
             </Routes>
           </div>
