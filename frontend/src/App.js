@@ -18,6 +18,7 @@ import useApplicationData from './hooks/useApplicationData';
 import useWishlistDataFetch from './hooks/useWishlistDataFetch';
 import useUserDataFetch from './hooks/useUserDataFetch';
 import useBookBoxes from "./hooks/useBookBoxes";
+import useCollections from "./hooks/useCollections";
 import useBooklistDataFetch from "./hooks/useBooklistDataFetch";
 
 
