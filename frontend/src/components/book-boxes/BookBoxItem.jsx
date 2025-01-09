@@ -1,5 +1,5 @@
 import "../../styles/book-boxes/BookBoxItem.scss";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import StateContext from '../../context/StateContext';
 import DispatchContext from "../../context/DispatchContext";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
@@ -14,14 +14,17 @@ const BookBoxItem = (props) => {
   const dispatch = useContext(DispatchContext);
   const increment = useIncrement();
   const decrement = useDecrement();
+  const [quantity, setQuantity] = useState(collection.quantity);
 
   const handleIncrement = (event, collectionId) => {
     event.preventDefault();
+    setQuantity((prev) => prev + 1);
     increment(collectionId);
   };
 
   const handleDecrement = (event, collectionId) => {
     event.preventDefault();
+    setQuantity((prev) => prev - 1);
     decrement(collectionId);
   };
   return (
@@ -40,7 +43,7 @@ const BookBoxItem = (props) => {
             className="book-box__decrement-icon"
             onClick={(event) => handleDecrement(event, collection.id)}
           />
-          <span className="book-box__quantity-text">Quantity: {collection.quantity}</span>
+          <span className="book-box__quantity-text">Quantity: {quantity}</span>
           <FaPlusCircle
             className="book-box__increment-icon"
             onClick={(event) => handleIncrement(event, collection.id)}
