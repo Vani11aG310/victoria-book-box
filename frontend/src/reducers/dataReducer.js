@@ -30,7 +30,7 @@ const dataReducer = (state, action) => {
     case ACTIONS.SET_WISHLIST: {
       return {
         ...state,
-        wishlistData: action.payload
+        wishlistData: action.payload,
       };
     }
 
@@ -79,7 +79,7 @@ const dataReducer = (state, action) => {
     case ACTIONS.SET_BOOKLIST: {
       return {
         ...state,
-        bookData: action.payload
+        bookData: action.payload,
       }
     }
 
