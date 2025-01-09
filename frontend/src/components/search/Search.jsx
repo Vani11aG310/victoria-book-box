@@ -4,11 +4,17 @@ import { useState, useContext } from "react";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
 import SearchResult from "./SearchResult";
+import { useLocation } from "react-router-dom";
 
-const Search = () => {
+const Search = (props) => {
+  const { mode } = props;
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useContext(DispatchContext);
   usePageTitle("Search", dispatch);
+
+  const location = useLocation();
+
+  const {boxId} = location.state || {boxId: null};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,7 +37,7 @@ const Search = () => {
         </button>
       </form>
 
-      {searchValue && <SearchResult searchValue={searchValue} />}
+      {searchValue && <SearchResult searchValue={searchValue} mode={mode} boxId={boxId}/>}
     </div>
   );
 }

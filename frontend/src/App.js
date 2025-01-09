@@ -49,7 +49,7 @@ function App() {
             <Routes>
               <Route path="/" element={<BookList />} />
               <Route path="/books" element={<BookList />} />
-              <Route path="/books/search" element={<BookSearch />} />
+              <Route path="/books/search" element={<Search mode={'books'}/>} />
               <Route path="/books/:id" element={<Book />} />
 
               <Route path="/book-boxes" element={<BookBoxList />} />

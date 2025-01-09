@@ -6,6 +6,7 @@ export const ACTIONS = {
   CREATE_WISHLIST_ITEM: 'CREATE_WISHLIST_ITEM',
   SET_BOOK_BOXES: 'SET_BOOK_BOXES',
   SET_COLLECTIONS: 'SET_COLLECTIONS',
+  CREATE_BOOK: 'CREATE_BOOK',
 }
 
 const dataReducer = (state, action) => {
@@ -35,6 +36,13 @@ const dataReducer = (state, action) => {
 
     case ACTIONS.SET_BOOK_BOXES: {
       return { ...state, bookBoxes: action.payload};
+    }
+
+    case ACTIONS.CREATE_BOOK: {
+      return {
+        ...state,
+        bookData: [...state.bookData, action.payload],
+      }
     }
 
     case ACTIONS.SET_COLLECTIONS: {
