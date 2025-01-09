@@ -57,7 +57,7 @@ function App() {
               <Route path="/book-boxes/:id" element={<BookBox />} />
 
               <Route path="/wishlists" element={<Wishlist />} />
-              <Route path="/wishlists/search" element={<Search mode={'wishlist'}/>} />
+              <Route path="/wishlists/search" element={<Search mode={'wishlists'}/>} />
               
               <Route path="/login" element={<Login />} />
 
