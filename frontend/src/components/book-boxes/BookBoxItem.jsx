@@ -27,7 +27,7 @@ const BookBoxItem = (props) => {
   return (
     <div>
       <li key={collection.id} className="book-box__collection-item">
-        <Link to={{ pathname: `/books/${collection.book.id}` }} state={{ collection: collection, bookDetails: collection.book }}>
+        <Link to={{ pathname: `/books/${collection.book.id}` }} state={{ bookId: collection.book.id }}>
           <img className="book-box__book-cover" src={collection.book.cover_url} alt={`Cover of ${collection.book.title}`} />
         </Link>
         <div className="book-box__book-info">
