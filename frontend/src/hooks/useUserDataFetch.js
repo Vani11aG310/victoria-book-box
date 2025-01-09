@@ -1,33 +1,34 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
+import { ACTIONS } from "../reducers/dataReducer";
 
-const useUserDataFetch = (setUsers) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  let users = [];
+const useUserDataFetch = (userId, dispatch) => {
+  let payload = [];
+  let loading = true;
+  let error = null;
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-
-    axios.get(`http://localhost:3001/api/users`)
+    axios.get(`http://localhost:3001/api/users/${userId}`)
       .then((res) => {
-        setLoading(false);
-        setUsers(res.data);
-        users = res.data;
+        loading = false;
+        payload = res.data;
+        dispatch({
+          type: ACTIONS.SET_USER,
+          payload,
+        });
       })
       .catch((err) => {
-        setLoading(false);
-        setError(err.message);
+        loading = false;
+        error = err.message;
         console.error("Error: ", err.message);
       });
-    }, []);
+    }, [userId]);
 
   return {
-    users,
+    payload,
     loading,
     error,
   };
 };
 
-export default useUserDataFetch;
+export default useUserDataFetch; 

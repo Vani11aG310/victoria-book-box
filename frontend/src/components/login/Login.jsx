@@ -3,25 +3,26 @@ import { useState, useEffect, useContext } from "react";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
-import useUserDataFetch from "../../hooks/useUserDataFetch";
+import useUsersDataFetch from "../../hooks/useUsersDataFetch";
 import { ACTIONS } from "../../reducers/dataReducer";
 
 const Login = () => {
   const state = useContext(StateContext);
   const currentUserId = state.user.id || undefined;
 
+  console.log("*** Current User:", currentUserId)
   const [userId, setUserId] = useState(currentUserId);
   const [users, setUsers] = useState([]);
+  
+    const dispatch = useContext(DispatchContext);
+  usePageTitle("Login", dispatch);
+  
+  // Custom hook to fetch the list of Users.
+  useUsersDataFetch(setUsers);
   
   useEffect(() => {
     setUserId(currentUserId);
   }, [currentUserId]);
-
-  const dispatch = useContext(DispatchContext);
-  usePageTitle("Login", dispatch);
-
-  // Custom hook to fetch the list of Users.
-  useUserDataFetch(setUsers);
 
   const handleUserIdChange = (event) => {
     setUserId(event.target.value);
@@ -29,11 +30,15 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUserId(event.target.userId.value);
+    const newUserId = event.target.userId.value
+    setUserId(newUserId);
 
+    // Update the global state with the new User.
+    const user = users.find((user) => user.id = newUserId);
+    console.log("***New User:", user)
     dispatch({
       type: ACTIONS.SET_USER,
-      userId,
+      payload: user,
     })
   }
 

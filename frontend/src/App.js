@@ -16,7 +16,7 @@ import StateContext from "./context/StateContext";
 import DispatchContext from "./context/DispatchContext";
 import useApplicationData from './hooks/useApplicationData';
 import useWishlistDataFetch from './hooks/useWishlistDataFetch';
-import useUserData from './hooks/useUserData';
+import useUserDataFetch from './hooks/useUserDataFetch';
 import useBookBoxes from "./hooks/useBookBoxes";
 import useBooklistDataFetch from "./hooks/useBooklistDataFetch";
 
@@ -28,7 +28,7 @@ function App() {
   // Custom Hook to set the User Data.
   // Assume for this project that the User ID is coming from an environment variable.
   const userId = Number(process.env.REACT_APP_USER_ID)
-  useUserData(userId, dispatch);
+  useUserDataFetch(userId, dispatch);
 
   // Custom Hook to fetch the Booklist Data.
   useBooklistDataFetch(dispatch);
@@ -38,7 +38,6 @@ function App() {
 
   // Custom Hook to fetch the Book Boxes.
   useBookBoxes(dispatch);
-  
 
   return (
     <div className="App">
