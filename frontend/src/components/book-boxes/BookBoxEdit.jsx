@@ -7,40 +7,31 @@ import usePageTitle from "../../hooks/usePageTitle";
 import { ACTIONS } from "../../reducers/dataReducer";
 
 const BookBoxEdit = (props) => {
-  let { mode, bookBox } = props;
+  let { mode } = props;
+  const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  // const state = useContext(StateContext);
-  // const bookBoxes = state.bookBoxes;
-  // const [userId, setUserId] = useState(currentUserId);
-  
-  // let {id} = useParams();
-  // id = Number(id);
-  // console.log("*** ID:", id);
-    
-  // console.log("*** Book Boxes:", bookBoxes);
-  // const bookBox = bookBoxes?.find((bookBox) => bookBox.id === id);
-  
-  // console.log("*** Book Box:", bookBox);
-  
-  // useEffect(() => {
-  //   setUserId(currentUserId);
-  // }, [currentUserId]);
+  let {id} = useParams();
+  id = Number(id);
+  let bookBox = {};
+  let title = "";
 
-  const title = mode === "create" ? `Create Book Box` : `Edit Book Box`;
-  usePageTitle(title, dispatch);
-  
-  // Create new bookBox object.
-  if (mode === "create") {
-    bookBox = {};
+
+  if (mode === "edit" && state.bookBoxes) {
+    bookBox = state.bookBoxes?.find((bookBox) => bookBox.id === id);
+    title = "Edit Book Box";
+  } else {
     bookBox.id = null;
     bookBox.name = null
     bookBox.address = null;
+    title = "Create Book Box"
   }
+  usePageTitle(title, dispatch);
 
-  
-  // // Custom hook to fetch the list of Users.
-  // const { users, loading, error } = useUsersDataFetch();
-  
+ 
+  // useEffect(() => {
+  //   setUserId(currentUserId);
+  // }, [currentUserId]);
+ 
 
   const handleChange = (event) => {
     console.log(event.target.value);
@@ -62,12 +53,23 @@ const BookBoxEdit = (props) => {
     // wishlistDataFetch(newUserId, dispatch);
   }
 
+  const handleCancel = (event) => {
+
+  }
+
+  if (!bookBox) {
+    return (
+      <div>
+        <h3>{`Book Box ${id} not found.`}</h3>
+      </div>
+    )
+  }
+
   return (
     <div>
       <form className="book-box__form" onSubmit={handleSubmit}>
-
         <div className="book-box__input-group">
-          <label htmlFor="name" className="book-box__label">Name:</label>
+          <label htmlFor="name" className="book-box__label">Name</label>
           <input
             name="name" 
             className="book-box__input"
@@ -77,7 +79,7 @@ const BookBoxEdit = (props) => {
             />
         </div>
         <div className="book-box__input-group">
-          <label htmlFor="address" className="book-box__label">Address:</label>
+          <label htmlFor="address" className="book-box__label">Address</label>
           <input
             name="address" 
             className="book-box__input"
@@ -87,8 +89,15 @@ const BookBoxEdit = (props) => {
             />
         </div>
         <div className="book-box__button-group">
-          <button type="button" className="book-box__cancel-button">Cancel</button>
-          <button type="submit" className="book-box__submit-button">Save</button>
+          <button 
+            type="button" 
+            className="book-box__cancel-button" 
+            onClick={handleCancel}
+          >Cancel</button>
+          <button 
+            type="submit" 
+            className="book-box__submit-button"
+          >Save</button>
         </div>
       </form>
     </div>
