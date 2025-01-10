@@ -1,13 +1,6 @@
 .book-boxes__list {
-  margin: 2rem 0;
-  padding: 0 1rem;
-}
-
-.book-boxes__header {
-  font-size: 1.8rem;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin: .5rem 0;
+  padding: .5rem;
 }
 
 .book-boxes__items {
@@ -16,8 +9,8 @@
 }
 
 .book-boxes__item {
-  margin: 1rem 0;
-  padding: 1rem;
+  margin: .5rem 0;
+  padding: 0.5rem;
   border-radius: 8px;
   background-color: lightgray;
   color: black;
@@ -33,7 +26,7 @@
   text-decoration: none;
   color: black;
   font-size: 1.2rem;
-  font-weight: bold;
+
 }
 
 .book-boxes__item:hover {
@@ -41,8 +34,16 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
-.book-boxes__link:hover {
-  color: #007bff;
+.book-boxes__content {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.book-boxes__name {
+  font-weight: bold; 
+  font-size: 1.2rem;
 }
 
 .book-boxes__fab {
@@ -70,4 +71,26 @@
 
 .book-boxes__add-icon {
   font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .book-boxes__item {
+    margin: .5rem 0;
+    padding: 0.25rem;
+  }
+
+  .book-boxes__content {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: .2rem;
+  }
+
+  .book-boxes__name {
+    font-size: 1rem;
+  }
+
+  .book-boxes__address,
+  .book-boxes__books {
+    font-size: 0.9rem;
+  }
 }

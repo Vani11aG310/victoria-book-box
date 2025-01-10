@@ -26,7 +26,7 @@ const BookBox = () => {
 
         <p className="book-box__address">{bookBox.address}</p>
       </div>
-      <h5>Books in this Box:</h5>
+      
       <ul className="book-box__collections">
         {collectionForBookBox && 
           collectionForBookBox.map((collection) => {

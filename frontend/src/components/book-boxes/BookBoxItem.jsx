@@ -30,6 +30,7 @@ const BookBoxItem = (props) => {
   return (
     <div>
       <li key={collection.id} className="book-box__collection-item">
+        <div className="book-box__collection-details">
         <Link to={{ pathname: `/books/${collection.book.id}` }} state={{ bookId: collection.book.id }}>
           <img className="book-box__book-cover" src={collection.book.cover_url} alt={`Cover of ${collection.book.title}`} />
         </Link>
@@ -38,12 +39,14 @@ const BookBoxItem = (props) => {
           <p className="book-box__book-author">By: {collection.book.author}</p>
           <p className="book-box__book-subject">Subject: {collection.book.subject}</p>
         </div>
+        </div>
         <div className="book-box__quantity">
+          <p className="book-box__quantity-text">Quantity:</p>
           <FaMinusCircle
             className="book-box__decrement-icon"
             onClick={(event) => handleDecrement(event, collection.id)}
           />
-          <span className="book-box__quantity-text">Quantity: {quantity}</span>
+          <span className="book-box__quantity-text"> {quantity}</span>
           <FaPlusCircle
             className="book-box__increment-icon"
             onClick={(event) => handleIncrement(event, collection.id)}
