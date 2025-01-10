@@ -3,12 +3,12 @@ import axios from "axios";
 
 
 const useSearchOpenLibrary = (searchValue) => {
-  const [response, setResponse] = useState(null);
+  const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setResponse(null);
+    setBooks(null);
     setLoading(true);
     setError(null);
 
@@ -16,7 +16,7 @@ const useSearchOpenLibrary = (searchValue) => {
       .then((res) => {
         setLoading(false);
         // Filter out books without a cover image
-        setResponse(res.data.docs.filter((book) => book.cover_edition_key));
+        setBooks(res.data.docs.filter((book) => book.cover_edition_key));
       })
       .catch((err) => {
         setLoading(false);
@@ -26,7 +26,7 @@ const useSearchOpenLibrary = (searchValue) => {
     }, [searchValue]);
 
   return {
-    books: response,
+    books,
     loading,
     error,
   };

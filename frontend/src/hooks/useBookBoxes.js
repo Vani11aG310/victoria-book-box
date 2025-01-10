@@ -17,7 +17,7 @@ const useBookBoxes = (dispatch) => {
     };
 
     fetchBookBoxes();
-  }, [dispatch]);
+  }, []);
 };
 
 export default useBookBoxes;

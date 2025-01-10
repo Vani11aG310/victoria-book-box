@@ -23,7 +23,7 @@ const useCollections = (dispatch, bookBoxId = null) => {
     };
 
     fetchCollections(); 
-  }, [dispatch, bookBoxId]); 
+  }, [bookBoxId]); 
 };
 
 export default useCollections;
