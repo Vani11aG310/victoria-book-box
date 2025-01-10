@@ -1,0 +1,45 @@
+.book-box__form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.book-box__name,
+.book-box__address {
+  flex-grow: 1;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: pink;
+}
+
+.book-box__name-label,
+.book-box__address-label {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: orange;
+}
+
+.book-box__cancel-button,
+.book-box__submit-button {
+  padding: 0.5rem;
+  border: none;
+  background-color: green;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.book-box__cancel-button:hover {
+  background-color: lightgray;
+}
+
+.book-box__submit-button:hover {
+  background-color: lightgray;
+}

@@ -16,10 +16,7 @@ const BookBoxEdit = (props) => {
   // let {id} = useParams();
   // id = Number(id);
   // console.log("*** ID:", id);
-  
-  
-  
-  
+    
   // console.log("*** Book Boxes:", bookBoxes);
   // const bookBox = bookBoxes?.find((bookBox) => bookBox.id === id);
   
@@ -87,8 +84,8 @@ const BookBoxEdit = (props) => {
           onChange={handleChange}
         />
 
-        <button type="button" className="book-box__submit-button">Cancel</button>
         <button type="submit" className="book-box__submit-button">Save</button>
+        <button type="button" className="book-box__cancel-button">Cancel</button>
       </form>
     </div>
   );
