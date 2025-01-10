@@ -13,7 +13,7 @@ const SearchResultItem = (props) => {
   book.cover_url = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg`;
 
   const state = useContext(StateContext);
-  const userId = state.userId;
+  const userId = state.userData.id;
 
   const dispatch = useContext(DispatchContext);
 

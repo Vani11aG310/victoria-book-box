@@ -1,35 +1,33 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
-const useSearchOpenLibrary = (searchValue) => {
-  const [books, setBooks] = useState(null);
+const useUsersDataFetch = () => {
+  const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setBooks(null);
+    setUsers(null);
     setLoading(true);
     setError(null);
 
-    axios.get(`https://openlibrary.org/search.json?q=${searchValue}&fields=key,title,author_name,cover_edition_key,subject&limit=20`)
+    axios.get(`http://localhost:3001/api/users`)
       .then((res) => {
         setLoading(false);
-        // Filter out books without a cover image
-        setBooks(res.data.docs.filter((book) => book.cover_edition_key));
+        setUsers(res.data);
       })
       .catch((err) => {
         setLoading(false);
         setError(err.message);
         console.error("Error: ", err.message);
       });
-    }, [searchValue]);
+    }, []);
 
   return {
-    books,
+    users,
     loading,
     error,
   };
 };
 
-export default useSearchOpenLibrary;
+export default useUsersDataFetch;

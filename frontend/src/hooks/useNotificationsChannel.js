@@ -13,13 +13,13 @@ const useNotificationsChannel = (userId, setNotifications) => {
       },
       {
         connected() {
-          console.log("*** Connected to NotificationsChannel");
+          console.log("Connected to NotificationsChannel");
         },
         disconnected() {
-          console.log("*** Disconnected from NotificationsChannel");
+          console.log("Disconnected from NotificationsChannel");
         },
         received(data) {
-          console.log("*** Received data:", data);
+          console.log("Received data:", data);
           setNotifications((prev) => [...prev, {id: data.id, message: data.message}]);
         }
       }

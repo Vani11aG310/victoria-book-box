@@ -5,7 +5,7 @@ const wishlistDataDelete = (wishlistId, dispatch) => {
   let error = null;
 
   axios.delete(`http://localhost:3001/api/wishlists/${wishlistId}`)
-    .then((res) => {
+    .then(() => {
       dispatch({
         type: ACTIONS.DELETE_WISHLIST_ITEM,
         wishlistId,

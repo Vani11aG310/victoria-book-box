@@ -23,7 +23,7 @@ const dataReducer = (state, action) => {
     case ACTIONS.SET_USER: {
       return {
         ...state,
-        userId: action.userId,
+        userData: action.payload,
       };
     }
 
@@ -31,7 +31,6 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         wishlistData: action.payload,
-        loading: false,
       };
     }
 
@@ -81,7 +80,6 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         bookData: action.payload,
-        loading: false
       }
     }
 
