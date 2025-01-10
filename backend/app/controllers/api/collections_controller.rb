@@ -82,6 +82,9 @@ class Api::CollectionsController < ApplicationController
         )
       ),
       status: :created
+      
+    # Send Notifications to the users that have the Book on their Wishlist.
+    send_notification
   end
 
   # PATCH/PUT /collections/1

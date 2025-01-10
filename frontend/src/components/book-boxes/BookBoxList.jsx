@@ -4,7 +4,6 @@ import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
 import { Link } from 'react-router-dom';
-import useCollections from "../../hooks/useCollections";
 import { FaPlusCircle } from "react-icons/fa";
 
 
@@ -13,7 +12,7 @@ const BookBoxList = () => {
   const dispatch = useContext(DispatchContext);
   
   usePageTitle("Book Boxes", dispatch);
-  // useCollections(dispatch);
+ 
   
   const [totalQuantities, setTotalQuantities] = useState({});
 
@@ -44,12 +43,12 @@ const BookBoxList = () => {
       <ul className="book-boxes__items">
         {state.bookBoxes ? (
           state.bookBoxes.map((bookBox) => (
-            <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox, collections: state.collections}}className="book-boxes__link" key={bookBox.id}>
+            <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox}}className="book-boxes__link" key={bookBox.id}>
               <li className="book-boxes__item">
                 <div className="book-boxes__content">
                   <span className="book-boxes__name">{bookBox.name}</span>
-                  <p>{bookBox.address}</p>
-                  <p>Books: {totalQuantities[bookBox.id] || 0}</p>
+                  <p className="book-boxes__address">{bookBox.address}</p>
+                  <p className="book-boxes__books">Books: {totalQuantities[bookBox.id] || 0}</p>
                 </div>
               </li>
             </Link>
