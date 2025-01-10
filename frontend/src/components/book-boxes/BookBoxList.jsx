@@ -44,7 +44,7 @@ const BookBoxList = () => {
       <ul className="book-boxes__items">
         {state.bookBoxes ? (
           state.bookBoxes.map((bookBox) => (
-            <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox, collections: state.collections}}className="book-boxes__link" key={bookBox.id}>
+            <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox}}className="book-boxes__link" key={bookBox.id}>
               <li className="book-boxes__item">
                 <div className="book-boxes__content">
                   <span className="book-boxes__name">{bookBox.name}</span>

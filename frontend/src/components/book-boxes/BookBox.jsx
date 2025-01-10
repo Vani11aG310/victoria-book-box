@@ -13,8 +13,6 @@ const BookBox = () => {
   const dispatch = useContext(DispatchContext);
   const { bookBox } = location.state;
 
-  console.log(state.collections);
-
   const collectionForBookBox = state.collections && state.collections.filter((collection) => collection.book_box.id === bookBox.id);
 
   usePageTitle(bookBox.name, dispatch);
