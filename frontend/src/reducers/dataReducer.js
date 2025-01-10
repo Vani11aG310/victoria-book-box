@@ -41,7 +41,7 @@ const dataReducer = (state, action) => {
     case ACTIONS.CREATE_BOOK: {
       return {
         ...state,
-        bookData: [...state.bookData, action.payload],
+        bookData: [...state.bookData, action.book],
         collections: [...state.collections, action.collection],
       }
     }
