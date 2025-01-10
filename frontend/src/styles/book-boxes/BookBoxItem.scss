@@ -10,6 +10,14 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.book-box__collection-details {
+  display: flex;
+  flex-direction: row;  
+  align-items: center;  
+  justify-content: flex-start;
+
+}
+
 .book-box__collection-item:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -32,6 +40,7 @@
   font-size: 1rem;
   text-align: center;
   flex-shrink: 0;
+  margin-top: 1rem;
 }
 
 .book-box__quantity-text {
@@ -76,21 +85,26 @@
 @media (max-width: 768px) {
 
   .book-box__collection-item {
-    flex-direction: column; 
-    align-items: flex-start;
-    justify-content: flex-start;
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
     margin: .5rem; 
   }
 
+  .book-box__book-cover {
+   
+    margin-bottom: .5rem; 
+  }
+
   .book-box__quantity {
-    flex-direction: row; 
-    gap: 1rem;
-    margin-top: 1rem;
-    text-align: left;
+    order: 2;  
+    margin-top: 0.5rem; 
+    text-align: left; 
   }
 
   .book-box__book-info {
-    padding-top: 1rem;
+    order: 1;
+    flex: 1;
   }
 
   .book-box__book-title,
@@ -102,13 +116,33 @@
 
 @media (max-width: 480px) {
 
+  .book-box__collection-item {
+    flex-direction: column; 
+    align-items: flex-start;  
+    justify-content: flex-start;  
+    margin: 0.5rem;  
+  }
+
+  .book-box__collection-details {
+    flex-direction: row;
+  }
+
   .book-box__book-cover {
+    margin-right: 0.5;  
+    margin-bottom: 1rem; 
     height: 100px; 
   }
 
   .book-box__book-title {
     font-size: 0.95rem;
   }
+
+  .book-box__quantity {
+    flex-direction: row;
+    margin-top: .25rem;  
+    text-align: center;  
+  }
+
 
   .book-box__book-author,
   .book-box__book-subject {
