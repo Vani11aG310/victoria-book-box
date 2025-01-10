@@ -7,9 +7,15 @@
   font-size: 1rem;
 }
 
-.book-box__name,
-.book-box__address {
-  flex-grow: 1;
+.book-box__input-group {
+  border: 1px solid white;
+}
+
+.book-box__button-group {
+  border: 1px solid white;
+}
+
+.book-box__input {
   padding: 0.5rem;
   margin: 1rem;
   border-radius: 5px;
@@ -17,14 +23,23 @@
   background-color: pink;
 }
 
-.book-box__name-label,
-.book-box__address-label {
+.book-box__label {
   padding: 0.5rem;
   font-size: 1rem;
   background-color: orange;
 }
 
-.book-box__cancel-button,
+.book-box__cancel-button {
+  padding: 0.5rem;
+  border: none;
+  background-color: red;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
 .book-box__submit-button {
   padding: 0.5rem;
   border: none;

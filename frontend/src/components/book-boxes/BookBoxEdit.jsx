@@ -66,26 +66,30 @@ const BookBoxEdit = (props) => {
     <div>
       <form className="book-box__form" onSubmit={handleSubmit}>
 
-        <label htmlFor="name" className="book-box__name-label">Name:</label>
-        <input
-          name="name" 
-          className="book-box__name"
-          autoComplete="off"
-          value={bookBox.name} 
-          onChange={handleChange}
-          />
-
-        <label htmlFor="address" className="book-box__address-label">Address:</label>
-        <input
-          name="address" 
-          className="book-box__address"
-          autoComplete="off"
-          value={bookBox.address} 
-          onChange={handleChange}
-        />
-
-        <button type="submit" className="book-box__submit-button">Save</button>
-        <button type="button" className="book-box__cancel-button">Cancel</button>
+        <div className="book-box__input-group">
+          <label htmlFor="name" className="book-box__label">Name:</label>
+          <input
+            name="name" 
+            className="book-box__input"
+            autoComplete="off"
+            value={bookBox.name} 
+            onChange={handleChange}
+            />
+        </div>
+        <div className="book-box__input-group">
+          <label htmlFor="address" className="book-box__label">Address:</label>
+          <input
+            name="address" 
+            className="book-box__input"
+            autoComplete="off"
+            value={bookBox.address} 
+            onChange={handleChange}
+            />
+        </div>
+        <div className="book-box__button-group">
+          <button type="button" className="book-box__cancel-button">Cancel</button>
+          <button type="submit" className="book-box__submit-button">Save</button>
+        </div>
       </form>
     </div>
   );
