@@ -4,6 +4,7 @@ import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
 import useUsersDataFetch from "../../hooks/useUsersDataFetch";
+import wishlistDataFetch from "../../db/wishlists/wishlistDataFetch";
 import { ACTIONS } from "../../reducers/dataReducer";
 
 const Login = () => {
@@ -36,6 +37,9 @@ const Login = () => {
       type: ACTIONS.SET_USER,
       payload: newUser,
     })
+
+    // If the userId is changed, we need to refresh the Wishlist.
+    wishlistDataFetch(newUserId, dispatch);
   }
 
   return (
