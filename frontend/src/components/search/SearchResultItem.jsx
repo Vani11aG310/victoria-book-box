@@ -6,16 +6,25 @@ import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
 import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
 import collectionDataCreate from "../../db/collections/collectionDataCreate";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SearchResultItem = (props) => {
   const { book, mode, boxId } = props;
   book.cover_url = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg`;
 
+  const navigate = useNavigate();
+
   const state = useContext(StateContext);
   const userId = state.userData.id;
 
   const dispatch = useContext(DispatchContext);
+
+  const bookBox = state.bookBoxes.find((bookBox) => bookBox.id === boxId)
+
+  const routeChange = () => {
+    let path = `/book-boxes/${boxId}`;
+    navigate(path, {state: {collections: state.collections, bookBox}});
+  }
 
   // Is the book already included in the wishlist?
   const wishlistItem = state.wishlistData.find((wishlistItem) => wishlistItem.book.open_library_key === book.key);
@@ -38,6 +47,7 @@ const SearchResultItem = (props) => {
   const handleAddToCollection = () => {
 
     /// Add book to collection
+    
     collectionDataCreate({
       bookBoxId: boxId,
       book: {
@@ -46,10 +56,12 @@ const SearchResultItem = (props) => {
         subject: book.subject && book.subject[0],
         openLibraryKey: book.key,
         openLibraryCoverKey: book.cover_edition_key,
-      }
-    }, dispatch
+      },
+      quantity: 1,
+    }, 
+      dispatch
     );
-
+    setTimeout(() => routeChange(), 2000);
   }
 
   const handleDelete = () => {
@@ -65,9 +77,9 @@ const SearchResultItem = (props) => {
         <p className="search-result__book-subject">Subject: <strong>{book.subject && book.subject[0]}</strong></p>
       </div>
       {mode === 'books' && <div className="search-result__add-button">
-        <Link to={{pathname: `/book-boxes/${boxId}`}}>
-          <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
-        </Link>
+        
+        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
+
       </div>}
       {mode === 'wishlists' && <div className="search-result__heart-button">
         {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={() => handleDelete()} />}

@@ -42,6 +42,7 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         bookData: [...state.bookData, action.payload],
+        collections: [...state.collections, action.collection],
       }
     }
 

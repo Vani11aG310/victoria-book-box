@@ -7,6 +7,7 @@ const collectionDataCreate = (collection, dispatch) => {
   axios.post(`http://localhost:3001/api/collections`, {   
     collection: { 
       book_box_id: collection.bookBoxId,
+      quantity: collection.quantity,
       title: collection.book.title,
       author: collection.book.author,
       subject: collection.book.subject,
@@ -17,7 +18,8 @@ const collectionDataCreate = (collection, dispatch) => {
   .then((res) => {
       dispatch({
         type: ACTIONS.CREATE_BOOK,
-        payload: res.data.book,
+        book: res.data.book,
+        collection: res.data
       });
     })
     .catch((err) => {
