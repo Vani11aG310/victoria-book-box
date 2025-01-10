@@ -8,8 +8,8 @@ import { ACTIONS } from "../../reducers/dataReducer";
 
 const Login = () => {
   const state = useContext(StateContext);
-  const currentUserId = state.userData.id || undefined;
-  const [userId, setUserId] = useState();
+  const currentUserId = state.userData.id;
+  const [userId, setUserId] = useState(currentUserId);
   
   const dispatch = useContext(DispatchContext);
   usePageTitle("Login", dispatch);
