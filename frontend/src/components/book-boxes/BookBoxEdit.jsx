@@ -49,26 +49,31 @@ const BookBoxEdit = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   
+
     if (mode === "edit") {
       // Update an existing Book Box.
       bookBoxDataUpdate(bookBox, dispatch);
-    } else { 
+
+      // Navigate back to the Book Box page
+      const path = `/book-boxes/${bookBox.id}`;
+      navigate(path, { state: { bookBox } });
+
+    } else {
       // Create a new Book Box.
       bookBoxDataCreate(bookBox, dispatch);
-    }
 
-    // Return to the previous page.
-    // navigate(-1);
-    navigate(`/book-boxes`); 
+      // Navigate to the Book Boxes page.
+      const path = `/book-boxes`;
+      navigate(path);
+    }
   };
 
   const handleCancel = () => {
-    const url = `/book-boxes`;
-    navigate(url); 
+    // Return to the previous page.
+    navigate(-1);
   }
 
-  if (!bookBox || (mode === "edit" && bookBox.id ===null)) {
+  if (!bookBox || (mode === "edit" && bookBox.id === null)) {
     return (
       <div>
         <h3>Loading...</h3>
@@ -102,13 +107,13 @@ const BookBoxEdit = (props) => {
           />
         </div>
         <div className="book-box__button-group">
-          <button 
-            type="button" 
-            className="book-box__cancel-button" 
+          <button
+            type="button"
+            className="book-box__cancel-button"
             onClick={handleCancel}
           >Cancel</button>
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="book-box__submit-button"
           >Save</button>
         </div>

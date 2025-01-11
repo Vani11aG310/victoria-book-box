@@ -20,6 +20,7 @@ const bookBoxDataUpdate = (bookBox, dispatch) => {
     });
 
   return {
+    bookBox,
     error,
   };
 };
