@@ -59,7 +59,8 @@ const BookBoxEdit = (props) => {
     }
 
     // Return to the previous page.
-    navigate(-1);
+    // navigate(-1);
+    navigate(`/book-boxes`); 
   };
 
   const handleCancel = () => {
@@ -70,7 +71,7 @@ const BookBoxEdit = (props) => {
   if (!bookBox || (mode === "edit" && bookBox.id ===null)) {
     return (
       <div>
-        <h3>{`Book Box ${id} not found.`}</h3>
+        <h3>Loading...</h3>
       </div>
     )
   }
@@ -84,7 +85,7 @@ const BookBoxEdit = (props) => {
             name="name"
             className="book-box__input"
             autoComplete="off"
-            required="true"
+            required
             value={bookBox.name}
             onChange={handleChange}
           />
@@ -95,7 +96,7 @@ const BookBoxEdit = (props) => {
             name="address"
             className="book-box__input"
             autoComplete="off"
-            required="true"
+            required
             value={bookBox.address}
             onChange={handleChange}
           />

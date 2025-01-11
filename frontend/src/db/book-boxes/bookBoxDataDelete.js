@@ -1,16 +1,14 @@
 import axios from "axios";
 import { ACTIONS } from "../../reducers/dataReducer";
 
-const bookBoxDataDelete = (bookBox, dispatch) => {
+const bookBoxDataDelete = (bookBoxId, dispatch) => {
   let error = null;
 
-  axios.delete(`http://localhost:3001/api/book_boxes/${bookBox.id}`, {   
-    name: bookBox.name,
-    address: bookBox.address
-  })
+  axios.delete(`http://localhost:3001/api/book_boxes/${bookBoxId}`)
   .then(() => {
       dispatch({
         type: ACTIONS.DELETE_BOOK_BOX,
+        bookBoxId,
       });
     })
     .catch((err) => {

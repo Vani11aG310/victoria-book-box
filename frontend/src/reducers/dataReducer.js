@@ -92,14 +92,14 @@ const dataReducer = (state, action) => {
       const newBookBox = action.bookBox;
 
       // Check if the bookBox already exists in our global state.
-      const itemExists = state.bookBoxes.some((bookBox) => bookBox.id === newBookBox.id);
+      const bookBoxExists = state.bookBoxes.some((bookBox) => bookBox.id === newBookBox.id);
 
-      // If the item exists, return the current state
-      if (itemExists) {
+      // If the Book Box exists, return the current state.
+      if (bookBoxExists) {
         return state;
       }
 
-      // If the item does not exist, add it to the wishlist
+      // If the Book Box does not exist, add it to the list of Book Boxes.
       return {
         ...state,
         bookBoxes: [...state.bookBoxes, newBookBox],
@@ -107,15 +107,28 @@ const dataReducer = (state, action) => {
     }
 
     case ACTIONS.DELETE_BOOK_BOX: {
+      const updatedBookBoxData = state.bookBoxes.filter((bookBox) => bookBox.id !== action.bookBoxId);
+
       return {
         ...state,
-      }
+        bookBoxes: updatedBookBoxData,
+      };
     }
 
     case ACTIONS.UPDATE_BOOK_BOX: {
+      const updatedBookBox = action.bookBox;
+
+      const updatedBookBoxesArray = state.bookBoxes.map((bookBox) => {
+        if (bookBox.id === updatedBookBox.id) {
+          return updatedBookBox;
+        }
+        return bookBox;
+      });
+
       return {
         ...state,
-      }
+        bookBoxes: updatedBookBoxesArray,
+      };
     }
 
     default:
