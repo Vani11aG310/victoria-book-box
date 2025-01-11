@@ -4,8 +4,10 @@
 }
 
 .book-boxes__items {
-  list-style: none;
+  gap: .25rem;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .book-boxes__item {
@@ -20,6 +22,7 @@
   border: 1px solid lightgray;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+ 
 }
 
 .book-boxes__link {
@@ -73,7 +76,7 @@
   font-size: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .book-boxes__item {
     margin: .5rem 0;
     padding: 0.25rem;
@@ -92,5 +95,16 @@
   .book-boxes__address,
   .book-boxes__books {
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book-boxes__items {
+    grid-template-columns: 1fr;
+  }
+
+  .book-boxes__item:hover {
+    transform: none;  
+    box-shadow: none; 
   }
 }

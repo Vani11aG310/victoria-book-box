@@ -17,7 +17,7 @@ const BookBox = () => {
 
   usePageTitle(bookBox.name, dispatch);
 
- 
+
 
   return (
     <div className="book-box">
@@ -26,16 +26,14 @@ const BookBox = () => {
 
         <p className="book-box__address">{bookBox.address}</p>
       </div>
-      
+
       <ul className="book-box__collections">
-        {collectionForBookBox && 
+        {collectionForBookBox &&
           collectionForBookBox.map((collection) => {
             return <BookBoxItem key={collection.id} collection={collection} />
           })}
       </ul>
-
-
-      <Link to='/books/search' state={{ boxId: bookBox.id}}>
+      <Link to='/books/search' state={{ boxId: bookBox.id }}>
         <div className="book-box__fab">
           <FaPlusCircle className="book-box__add-icon" />
         </div>

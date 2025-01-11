@@ -112,6 +112,12 @@
   .book-box__book-subject {
     font-size: 1rem; 
   }
+
+  .book-box__collection-item:hover {
+    transform: none;  
+    box-shadow: none;  
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -152,4 +158,10 @@
   .book-box__quantity-text {
     font-size: 1rem;
   }
+
+  .book-box__collection-item:hover {
+    transform: none;  
+    box-shadow: none;  
+  }
+
 }
