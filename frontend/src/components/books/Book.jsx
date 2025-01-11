@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/books/Book.scss";
+import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import StateContext from "../../context/StateContext";
@@ -49,11 +50,16 @@ const Book = () => {
       {!loading && <p>{bookDetails.book_description}</p>}
       {!loading &&<h3>Book Available At:</h3>}
       {!loading && <ul className="book__info-list">
-                    <Link to={`/book-boxes/${!loading && collection[0].book_box.id}`} state={{ bookBox: collection[0].book_box}}>
                       {!loading && Array.isArray(collection) && collection.map((item) => (
-                        <h4 key={item.book.id}>{item.book_box.name}, {item.book_box.address}</h4>
+                        <Link to={`/book-boxes/${!loading && item.book_box.id}`} state={{ bookBox: item.book_box}}>
+                            <li className="book-boxes__item">
+                              <div className="book-boxes__content">
+                                <h4 className="book-boxes__name">{item.book_box.name}</h4>
+                                <p className="book-boxes__address">{item.book_box.address}</p>
+                              </div>
+                            </li>
+                        </Link>
                       ))}
-                    </Link>
                   </ul>}
     </div>
   );
