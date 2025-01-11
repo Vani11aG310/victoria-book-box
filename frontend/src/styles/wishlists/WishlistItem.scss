@@ -5,12 +5,18 @@
   border-color: lightgray;
   border-style: solid;
   border-radius: 8px;
-  width: 100%;
   background-color: lightgray;
   color: black;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.wishlist__item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .wishlist__book-cover {
@@ -47,4 +53,11 @@
 }
 .wishlist__heart-icon {
   font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .wishlist__item:hover {
+    transform: none;
+    box-shadow: none;
+  }  
 }
