@@ -84,6 +84,7 @@ const BookBoxEdit = (props) => {
             name="name"
             className="book-box__input"
             autoComplete="off"
+            required="true"
             value={bookBox.name}
             onChange={handleChange}
           />
@@ -94,6 +95,7 @@ const BookBoxEdit = (props) => {
             name="address"
             className="book-box__input"
             autoComplete="off"
+            required="true"
             value={bookBox.address}
             onChange={handleChange}
           />
