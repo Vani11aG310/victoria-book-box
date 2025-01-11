@@ -1,0 +1,53 @@
+.book-box__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.book-box__input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-box__button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem; 
+}
+
+.book-box__input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.book-box__label {
+  margin-bottom: 0.5rem;
+}
+
+.book-box__cancel-button,
+.book-box__submit-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.book-box__cancel-button {
+  background-color: lightgray;
+}
+
+.book-box__submit-button {
+  background-color: white;
+}
+
+.book-box__cancel-button:hover {
+  background-color: white;
+}
+
+.book-box__submit-button:hover {
+  background-color: lightgray;
+}
