@@ -48,7 +48,7 @@ const BookList = () => {
       
       {Array.isArray(bookList) && <ul className="booklist">
         {bookList.map((book) => (
-          <BooklistItem key={book.id} booklistItem={book} />
+          (state.collections.find((collection) => collection.book_id === book.id) && <BooklistItem key={book.id} booklistItem={book} />)
         ))}
       </ul>}
       

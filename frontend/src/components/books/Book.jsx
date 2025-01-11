@@ -50,6 +50,7 @@ const Book = () => {
       {!loading && <p>{bookDetails.book_description}</p>}
       {!loading &&<h3>Book Available At:</h3>}
       {!loading && <ul className="book__info-list">
+                      {!collection && <h4>No book boxes available</h4>}
                       {!loading && Array.isArray(collection) && collection.map((item) => (
                         <Link to={`/book-boxes/${!loading && item.book_box.id}`} state={{ bookBox: item.book_box}}>
                             <li className="book-boxes__item">
