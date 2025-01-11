@@ -6,7 +6,7 @@ import DispatchContext from "../../context/DispatchContext";
 import wishListDataCreate from "../../db/wishlists/wishlistDataCreate";
 import wishListDataDelete from "../../db/wishlists/wishlistDataDelete";
 import collectionDataCreate from "../../db/collections/collectionDataCreate";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchResultItem = (props) => {
   const { book, mode, boxId } = props;
