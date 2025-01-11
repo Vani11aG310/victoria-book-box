@@ -1,12 +1,15 @@
 export const ACTIONS = {
-  SET_PAGE_TITLE: 'SET_PAGE_TITLE',
-  SET_USER: 'SET_USER',
-  SET_WISHLIST: 'SET_WISHLIST',
-  DELETE_WISHLIST_ITEM: 'DELETE_WISHLIST_ITEM',
-  CREATE_WISHLIST_ITEM: 'CREATE_WISHLIST_ITEM',
-  SET_BOOK_BOXES: 'SET_BOOK_BOXES',
-  SET_COLLECTIONS: 'SET_COLLECTIONS',
-  CREATE_BOOK: 'CREATE_BOOK',
+  SET_PAGE_TITLE: "SET_PAGE_TITLE",
+  SET_USER: "SET_USER",
+  SET_WISHLIST: "SET_WISHLIST",
+  SET_BOOK_BOXES: "SET_BOOK_BOXES",
+  SET_COLLECTIONS: "SET_COLLECTIONS",
+  CREATE_BOOK_BOX: "CREATE_BOOK_BOX",
+  CREATE_BOOK: "CREATE_BOOK",
+  CREATE_WISHLIST_ITEM: "CREATE_WISHLIST_ITEM",
+  DELETE_BOOK_BOX: "DELETE_BOOK_BOX",
+  DELETE_WISHLIST_ITEM: "DELETE_WISHLIST_ITEM",
+  UPDATE_BOOK_BOX: "UPDATE_BOOK_BOX",
 }
 
 const dataReducer = (state, action) => {
@@ -81,6 +84,37 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         bookData: action.payload,
+      }
+    }
+
+
+    case ACTIONS.CREATE_BOOK_BOX: {
+      const newBookBox = action.bookBox;
+
+      // Check if the bookBox already exists in our global state.
+      const itemExists = state.bookBoxes.some((bookBox) => bookBox.id === newBookBox.id);
+
+      // If the item exists, return the current state
+      if (itemExists) {
+        return state;
+      }
+
+      // If the item does not exist, add it to the wishlist
+      return {
+        ...state,
+        bookBoxes: [...state.bookBoxes, newBookBox],
+      };
+    }
+
+    case ACTIONS.DELETE_BOOK_BOX: {
+      return {
+        ...state,
+      }
+    }
+
+    case ACTIONS.UPDATE_BOOK_BOX: {
+      return {
+        ...state,
       }
     }
 

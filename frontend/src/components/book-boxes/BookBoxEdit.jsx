@@ -1,14 +1,17 @@
 import "../../styles/book-boxes/BookBoxEdit.scss";
 import React, { useState, useEffect, useContext, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
+import bookBoxDataCreate from "../../db/book-boxes/bookBoxDataCreate";
+import bookBoxDataUpdate from "../../db/book-boxes/bookBoxDataUpdate";
 
 const BookBoxEdit = (props) => {
   let { mode } = props;
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  const navigate = useNavigate();
   let { id } = useParams();
   id = Number(id);
 
@@ -27,6 +30,7 @@ const BookBoxEdit = (props) => {
   }, [mode, state.bookBoxes, id]);
 
   const [bookBox, setBookBox] = useState(initialBookBox);
+
   const title = mode === "edit" ? "Edit Book Box" : "Create Book Box";
   usePageTitle(title, dispatch);
 
@@ -45,11 +49,22 @@ const BookBoxEdit = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
+   
+    if (mode === "edit") {
+      // Update an existing Book Box.
+      bookBoxDataUpdate(bookBox, dispatch);
+    } else { 
+      // Create a new Book Box.
+      bookBoxDataCreate(bookBox, dispatch);
+    }
+
+    // Return to the previous page.
+    navigate(-1);
   };
 
-  const handleCancel = (event) => {
-    // Handle form cancel logic here
+  const handleCancel = () => {
+    const url = `/book-boxes`;
+    navigate(url); 
   }
 
   if (!bookBox || (mode === "edit" && bookBox.id ===null)) {
