@@ -78,12 +78,12 @@ const SearchResultItem = (props) => {
       </div>
       {mode === 'books' && <div className="search-result__add-button">
         
-        <FaPlusCircle className="search-result__add-icon" onClick={() => handleAddToCollection()} />
+        <FaPlusCircle className="search-result__add-icon" onClick={handleAddToCollection} />
 
       </div>}
       {mode === 'wishlists' && <div className="search-result__heart-button">
-        {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={() => handleDelete()} />}
-        {!wishlistItem && <FaRegHeart className="search-result__reg-heart-icon" onClick={() => handleAddToWishlist()} />}
+        {wishlistItem && <FaHeart className="search-result__heart-icon" onClick={handleDelete} />}
+        {!wishlistItem && <FaRegHeart className="search-result__reg-heart-icon" onClick={handleAddToWishlist} />}
       </div>}
     </div>
   );

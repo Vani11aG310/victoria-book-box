@@ -22,7 +22,7 @@ const WishlistItem = (props) => {
         <p className="wishlist__book-subject">Subject: <strong>{wishlistItem.book.subject}</strong></p>
       </div>
       <div className="wishlist__heart-button">
-        <FaHeart className="wishlist__heart-icon" onClick={() => handleDelete()} />
+        <FaHeart className="wishlist__heart-icon" onClick={handleDelete} />
       </div>
     </div>
   );
