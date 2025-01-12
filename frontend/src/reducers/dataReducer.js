@@ -1,12 +1,15 @@
 export const ACTIONS = {
-  SET_PAGE_TITLE: 'SET_PAGE_TITLE',
-  SET_USER: 'SET_USER',
-  SET_WISHLIST: 'SET_WISHLIST',
-  DELETE_WISHLIST_ITEM: 'DELETE_WISHLIST_ITEM',
-  CREATE_WISHLIST_ITEM: 'CREATE_WISHLIST_ITEM',
-  SET_BOOK_BOXES: 'SET_BOOK_BOXES',
-  SET_COLLECTIONS: 'SET_COLLECTIONS',
-  CREATE_BOOK: 'CREATE_BOOK',
+  SET_PAGE_TITLE: "SET_PAGE_TITLE",
+  SET_USER: "SET_USER",
+  SET_WISHLIST: "SET_WISHLIST",
+  SET_BOOK_BOXES: "SET_BOOK_BOXES",
+  SET_COLLECTIONS: "SET_COLLECTIONS",
+  CREATE_BOOK_BOX: "CREATE_BOOK_BOX",
+  CREATE_BOOK: "CREATE_BOOK",
+  CREATE_WISHLIST_ITEM: "CREATE_WISHLIST_ITEM",
+  DELETE_BOOK_BOX: "DELETE_BOOK_BOX",
+  DELETE_WISHLIST_ITEM: "DELETE_WISHLIST_ITEM",
+  UPDATE_BOOK_BOX: "UPDATE_BOOK_BOX",
 }
 
 const dataReducer = (state, action) => {
@@ -82,6 +85,50 @@ const dataReducer = (state, action) => {
         ...state,
         bookData: action.payload,
       }
+    }
+
+
+    case ACTIONS.CREATE_BOOK_BOX: {
+      const newBookBox = action.bookBox;
+
+      // Check if the bookBox already exists in our global state.
+      const bookBoxExists = state.bookBoxes.some((bookBox) => bookBox.id === newBookBox.id);
+
+      // If the Book Box exists, return the current state.
+      if (bookBoxExists) {
+        return state;
+      }
+
+      // If the Book Box does not exist, add it to the list of Book Boxes.
+      return {
+        ...state,
+        bookBoxes: [...state.bookBoxes, newBookBox],
+      };
+    }
+
+    case ACTIONS.DELETE_BOOK_BOX: {
+      const updatedBookBoxData = state.bookBoxes.filter((bookBox) => bookBox.id !== action.bookBoxId);
+
+      return {
+        ...state,
+        bookBoxes: updatedBookBoxData,
+      };
+    }
+
+    case ACTIONS.UPDATE_BOOK_BOX: {
+      const updatedBookBox = action.bookBox;
+
+      const updatedBookBoxesArray = state.bookBoxes.map((bookBox) => {
+        if (bookBox.id === updatedBookBox.id) {
+          return updatedBookBox;
+        }
+        return bookBox;
+      });
+
+      return {
+        ...state,
+        bookBoxes: updatedBookBoxesArray,
+      };
     }
 
     default:

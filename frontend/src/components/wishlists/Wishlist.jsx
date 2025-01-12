@@ -14,7 +14,9 @@ const Wishlist = () => {
   const dispatch = useContext(DispatchContext);
   const {pathname} = useLocation();
   const navigate = useNavigate();
-  usePageTitle(`Wishlist (${userName})`, dispatch);
+  
+  const pageTitle = userName ? `Wishlist (${userName})` : `Wishlist`;
+  usePageTitle(pageTitle, dispatch);
 
   const handleAdd = () => {
     const url = `${pathname}/search`;
@@ -29,7 +31,7 @@ const Wishlist = () => {
         })}
       </ul>
       <div className="wishlist__fab"> 
-        <FaPlusCircle className="wishlist__add-icon" onClick={() => handleAdd()} />
+        <FaPlusCircle className="wishlist__add-icon" onClick={handleAdd} />
       </div>
     </div>
   );
