@@ -2,10 +2,15 @@
   margin: 0.5rem;
   padding: 0.5rem;
   border-width: 0.5px;
-  border-color: lightgray;
+  // border-color: lightgray;
+  border: 1px solid black;
   border-style: solid;
   border-radius: 8px;
-  background-color: lightgray;
+  // background-color: lightgray;
+  // color: black;
+  // background-color: #4F515e;
+  // color: white;
+  background-color: #f4d58d;
   color: black;
   display: flex;
   align-items: center;
@@ -25,6 +30,7 @@
   width: auto;
   margin-right: 1rem;
   border-radius: 8px;
+  border: 1px solid black;
 }
 
 .booklist-item__book-info {
