@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { createConsumer } from "@rails/actioncable";
+import { ACTIONS } from "../reducers/dataReducer";
 
-const useNotificationsChannel = (userId, setNotifications) => {
+const useNotificationsChannel = (userId, setNotifications, dispatch) => {
 
   useEffect(() => {
     const consumer = createConsumer("ws://localhost:3001/cable");
@@ -20,7 +21,14 @@ const useNotificationsChannel = (userId, setNotifications) => {
         },
         received(data) {
           console.log("Received data:", data);
-          setNotifications((prev) => [...prev, {id: data.id, message: data.message, book_box_id: data.book_box_id}]);
+
+          dispatch({
+            type: ACTIONS.CREATE_BOOK,
+            book: data.collection.book,
+            collection: data.collection,
+          });
+
+          setNotifications((prev) => [...prev, {id: data.id, message: data.message, collection: data.collection}]);
         }
       }
     );
