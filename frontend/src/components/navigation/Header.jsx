@@ -1,7 +1,6 @@
 import "../../styles/navigation/Header.scss";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { PiBooks } from "react-icons/pi";
 import StateContext from "../../context/StateContext";
 import logo from '../../logo/logo.png';
 
@@ -19,12 +18,12 @@ const Header = () => {
   
   return (
     <header className="app-header">
-      <span className="page-title" onClick={handleClick} >{pageTitle} </span>
       <span className="app-name">
         <Link to='/books' className="header-button">
           <img src={logo} alt="Logo" className="header-icon" />
         </Link>
       </span>
+      <span className="page-title" onClick={handleClick} >{pageTitle} </span>
     </header>
   );
 }

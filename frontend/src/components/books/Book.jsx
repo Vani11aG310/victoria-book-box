@@ -3,7 +3,7 @@ import "../../styles/books/Book.scss";
 // import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { PiBooks } from "react-icons/pi";
+import logoIcon from "../../logo/logo icon.png";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -60,7 +60,7 @@ const Book = () => {
         {Array.isArray(collection) && collection.length > 0 ? collection.map((item) => (
           <Link key={item.id} to={`/book-boxes/${item.book_box.id}`} state={{ bookBox: item.book_box}}>
               <li className="book-boxes__item">
-                <PiBooks className="book-boxes__icon" />
+                <img src={logoIcon} alt="Logo" className="book-boxes__book-icon" />
                 <div className="book-boxes__content">
                   <h4 className="book-boxes__name">{item.book_box.name}</h4>
                   <p className="book-boxes__address">{item.book_box.address}</p>
