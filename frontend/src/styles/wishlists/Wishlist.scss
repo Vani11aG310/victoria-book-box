@@ -1,10 +1,8 @@
 .wishlist {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: .25rem;
+  padding: 0rem;
 }
 
 .wishlist__fab {
@@ -30,4 +28,16 @@
 
 .wishlist__add-icon {
   font-size: 1.5rem;
+}
+
+@media (max-width: 1040px) {
+  .wishlist {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .wishlist {
+    grid-template-columns: 1fr;
+  }
 }

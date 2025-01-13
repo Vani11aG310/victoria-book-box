@@ -18,7 +18,9 @@
 }
 
 .book-box__collections {
-  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: .25rem; 
   padding: 0;
 }
 
@@ -78,9 +80,8 @@
   color: lightgray;
 }
 
-
-@media (max-width: 768px) {
-
+@media (max-width: 1040px) {
+ 
   .book-box__title {
     font-size: 1.6rem; 
   }
@@ -91,6 +92,7 @@
 
   .book-box__collections {
     padding: 0;
+    grid-template-columns: 1fr;
   }
 
   .book-box__fab {
@@ -104,7 +106,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   
   .book-box__title {
     font-size: 1.4rem; 

@@ -14,16 +14,125 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  height: 600px;
+  border: 1px solid black;
 }
 
 .book__info-list {
-  background-color: #f0f0f0; // You can change this to any color you prefer
-  padding: 10px;
-  border-radius: 5px;
-  color: black;
+  margin: .5rem;
+  padding: .5rem;
+  list-style: none;
+}
+
+.book__info-list.single-item {
+  justify-content: center; 
+  align-items: center;
+  padding: 0;
+}
+
+.book__info-list.multi-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .25rem;
+  padding: 0;
 }
 
 a {
   color: black;
   text-decoration: none;
+}
+
+.book-boxes__item {
+  margin: .5rem 0;
+  padding: .5rem;
+  border-radius: 8px;
+  background-color: #f4d58d;
+  color: black;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+ 
+}
+
+.book-boxes__item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.book-boxes__content {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  margin: .25rem;
+  gap: .25rem;
+}
+
+@media (max-width: 1040px) {
+  .book__cover {
+    height: 500px;
+  }
+
+  
+}
+
+@media (max-width: 780px) {
+  .book__cover {
+    height: 400px;
+  }
+
+  
+  .book-boxes__content {
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: space-evenly; 
+    gap: .2px;
+    margin: .2px;
+    margin-left:1rem;
+    text-align: left;
+    padding: 0rem;
+  }
+
+  .book-boxes__name {
+    font-size: 1rem;
+  }
+  
+  .book-boxes__item {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start;
+    justify-content: flex-start; 
+    margin: .5rem 0;
+    padding: 0.25rem;
+  }
+  .book-boxes__name,
+  .book-boxes__address {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .book__cover {
+    height: 300px;
+  }
+
+  .book__info-list.multi-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: .25rem;
+    padding: 0;
+  }
+
+  .book-boxes__items {
+    grid-template-columns: 1fr;
+  }
+
+  .book-boxes__item:hover {
+    transform: none;  
+    box-shadow: none; 
+  }
 }
