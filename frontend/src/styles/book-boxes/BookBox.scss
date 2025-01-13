@@ -1,5 +1,8 @@
 .book-box__header {
-  margin-bottom: 1.5rem;
+  margin: 1rem 0rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .book-box__title {
@@ -8,11 +11,10 @@
   color: white;
 }
 
-
-
 .book-box__address {
   font-size: 1.5rem;
   color: white;
+  margin: 0.5rem 0rem;
 }
 
 .book-box__collections {
@@ -50,13 +52,39 @@
   font-size: 1.5rem;
 }
 
+.book-box__header-button-group {
+  display:flex;
+  justify-content: space-between;
+}
+
+.book-box__delete-icon {
+  font-size: 1rem;
+  color: red;
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+
+.book-box__delete-icon:hover {
+  color: darkred;
+}
+
+.book-box__edit-icon {
+  font-size: 1rem;
+  color: white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+
+.book-box__edit-icon:hover {
+  color: lightgray;
+}
 
 @media (max-width: 1040px) {
-  
+ 
   .book-box__title {
     font-size: 1.6rem; 
   }
-
 
   .book-box__address {
     font-size: 1rem;
@@ -80,7 +108,6 @@
 
 @media (max-width: 720px) {
   
- 
   .book-box__title {
     font-size: 1.4rem; 
   }

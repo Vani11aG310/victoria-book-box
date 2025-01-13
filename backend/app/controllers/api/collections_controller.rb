@@ -129,6 +129,7 @@ class Api::CollectionsController < ApplicationController
         message: message,
         id: @collection[:id],
         book_title: book[:title],
+        book_box_id: book_box[:id],
         book_box_name: book_box[:name],
         book_box_address: book_box[:address]
         }

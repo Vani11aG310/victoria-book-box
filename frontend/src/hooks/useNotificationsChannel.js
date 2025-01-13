@@ -20,7 +20,7 @@ const useNotificationsChannel = (userId, setNotifications) => {
         },
         received(data) {
           console.log("Received data:", data);
-          setNotifications((prev) => [...prev, {id: data.id, message: data.message}]);
+          setNotifications((prev) => [...prev, {id: data.id, message: data.message, book_box_id: data.book_box_id}]);
         }
       }
     );

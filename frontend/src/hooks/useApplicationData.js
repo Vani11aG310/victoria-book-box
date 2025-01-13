@@ -6,8 +6,8 @@ const useApplicationData = () => {
     pageTitle: null,
     userData:{},
     bookData: [],
-    bookBoxesData: [],
     wishlistData: [],
+    bookBoxes: [],
     collections: [],
   };
 

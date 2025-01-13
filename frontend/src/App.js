@@ -4,10 +4,9 @@ import Header from "./components/navigation/Header";
 import Footer from "./components/navigation/Footer";
 import Notification from "./components/notification/Notification";
 import BookList from "./components/books/BookList";
-import BookSearch from "./components/books/BookSearch";
 import Book from "./components/books/Book";
 import BookBoxList from "./components/book-boxes/BookBoxList";
-import BookBoxCreate from "./components/book-boxes/BookBoxCreate";
+import BookBoxEdit from "./components/book-boxes/BookBoxEdit";
 import BookBox from "./components/book-boxes/BookBox";
 import Wishlist from "./components/wishlists/Wishlist";
 import Search from "./components/search/Search";
@@ -20,8 +19,6 @@ import useUserDataFetch from './hooks/useUserDataFetch';
 import useBookBoxes from "./hooks/useBookBoxes";
 import useCollections from "./hooks/useCollections";
 import useBooklistDataFetch from "./hooks/useBooklistDataFetch";
-
-
 
 function App() {
   // Custom Hook to manage the Application's State.
@@ -45,7 +42,6 @@ function App() {
   // Custom Hook to fetch the Booklist Data.
   useBooklistDataFetch(dispatch);
 
-
   return (
     <div className="App">
       <DispatchContext.Provider value={dispatch}>
@@ -60,7 +56,8 @@ function App() {
               <Route path="/books/:id" element={<Book />} />
 
               <Route path="/book-boxes" element={<BookBoxList />} />
-              <Route path="/book-boxes/create" element={<BookBoxCreate />} />
+              <Route path="/book-boxes/create" element={<BookBoxEdit mode={'create'}/>} />
+              <Route path="/book-boxes/edit/:id" element={<BookBoxEdit mode={'edit'}/>} />
               <Route path="/book-boxes/:id" element={<BookBox />} />
 
               <Route path="/wishlists" element={<Wishlist />} />

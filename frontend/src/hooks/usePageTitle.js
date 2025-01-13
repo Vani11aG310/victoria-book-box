@@ -7,7 +7,7 @@ const usePageTitle = (pageTitle, dispatch) => {
       type: ACTIONS.SET_PAGE_TITLE,
       pageTitle,
     });
-  }, []);
+  }, [pageTitle]);
 };
 
 export default usePageTitle;

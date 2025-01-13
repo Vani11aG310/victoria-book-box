@@ -9,6 +9,7 @@
   align-items: center;
   padding: 0.5rem 0;
   z-index: 1000;
+  height: 70px;
 }
 
 .app-name {
@@ -44,4 +45,6 @@
 
 .header-icon {
   font-size: 2rem;
+  width: 120px; /* Adjust the width as needed */
+  height: auto;
 }

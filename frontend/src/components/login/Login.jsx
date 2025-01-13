@@ -1,5 +1,6 @@
 import "../../styles/login/Login.scss";
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -11,6 +12,7 @@ const Login = () => {
   const state = useContext(StateContext);
   const currentUserId = state.userData.id;
   const [userId, setUserId] = useState(currentUserId);
+  const navigate = useNavigate();
   
   const dispatch = useContext(DispatchContext);
   usePageTitle("Login", dispatch);
@@ -40,23 +42,30 @@ const Login = () => {
 
     // If the userId is changed, we need to refresh the Wishlist.
     wishlistDataFetch(newUserId, dispatch);
+
+    // Return to the previous page.
+    navigate(-1);
   }
 
   return (
     <div>
       <form className="login__form" onSubmit={handleSubmit}>
-        <label htmlFor="userId" className="login__userid-label">User:</label>
-        <select 
-          name="userId" 
-          className="login__userid"
-          value={userId} 
-          onChange={handleUserIdChange}
-          >
-          {Array.isArray(users) && users.map((user) => {
-            return <option key={user.id} value={user.id}>{user.name}</option>;
-          })}
-        </select>
-        <button type="submit" className="login__submit-button">Save</button>
+        <div className="login__input-group">
+          <label htmlFor="userId" className="login__label">User</label>
+          <select 
+            name="userId" 
+            className="login__input"
+            value={userId} 
+            onChange={handleUserIdChange}
+            >
+            {Array.isArray(users) && users.map((user) => {
+              return <option key={user.id} value={user.id}>{user.name}</option>;
+            })}
+          </select>
+        </div>
+        <div className="login__button-group">
+          <button type="submit" className="login__submit-button">Save</button>
+        </div>
       </form>
     </div>
   );
