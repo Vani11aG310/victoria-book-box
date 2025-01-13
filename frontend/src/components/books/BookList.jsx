@@ -9,24 +9,20 @@ import BooklistItem from "./BooklistItem";
 
 const BookList = () => {
   const state = useContext(StateContext);
-  const [filteredBooklist, setFilteredBooklist] = useState(null);
+  const [filteredBooklist, setFilteredBooklist] = useState();
   const bookList = filteredBooklist ? filteredBooklist : state.bookData;
   const dispatch = useContext(DispatchContext);
   usePageTitle("Books", dispatch);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const query = event.target.search.value;
+    const query = event.target.search.value.toLowerCase();
     const filteredBooks = query ? state.bookData.filter((book) => {
-      if (book.title.toLowerCase().includes(query.toLowerCase())) {
-        return book.title.toLowerCase().includes(query.toLowerCase());;
-      }
-      if (book.author.toLowerCase().includes(query.toLowerCase())) {
-        return book.author.toLowerCase().includes(query.toLowerCase());
-      }
-      if (book.subject.toLowerCase().includes(query.toLowerCase())) {
-        return book.subject.toLowerCase().includes(query.toLowerCase());
-      }
+      const titleMatch = book.title && book.title.toLowerCase().includes(query);
+      const authorMatch = book.author && book.author.toLowerCase().includes(query);
+      const subjectMatch = book.subject && book.subject.toLowerCase().includes(query);
+
+      return titleMatch || authorMatch || subjectMatch;
     }) : state.bookData;
     setFilteredBooklist(filteredBooks);
   }

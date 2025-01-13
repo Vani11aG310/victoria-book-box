@@ -1,13 +1,9 @@
 import "../../styles/books/BooklistItem.scss";
-import { useContext } from "react";
-import DispatchContext from "../../context/DispatchContext";
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const BooklistItem = (props) => {
-  const { booklistItem } = props;
 
+  const { booklistItem } = props;
 
   return (
     <Link className="booklist-item__item" to={{pathname:`/books/${booklistItem.id}`}} state={{ bookId: booklistItem.id }}>
