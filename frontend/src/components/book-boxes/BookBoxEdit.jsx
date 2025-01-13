@@ -30,7 +30,6 @@ const BookBoxEdit = (props) => {
   }, [mode, state.bookBoxes, id]);
 
   const [bookBox, setBookBox] = useState(initialBookBox);
-
   const title = mode === "edit" ? "Edit Book Box" : "Create Book Box";
   usePageTitle(title, dispatch);
 
@@ -47,24 +46,24 @@ const BookBoxEdit = (props) => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    let path = "";
 
     if (mode === "edit") {
       // Update an existing Book Box.
       bookBoxDataUpdate(bookBox, dispatch);
 
       // Navigate back to the Book Box page
-      const path = `/book-boxes/${bookBox.id}`;
+      path = `/book-boxes/${bookBox.id}`;
       navigate(path, { state: { bookBox } });
-
     } else {
       // Create a new Book Box.
-      bookBoxDataCreate(bookBox, dispatch);
+      const { bookBox: newBookBox } = await bookBoxDataCreate(bookBox, dispatch);
 
-      // Navigate to the Book Boxes page.
-      const path = `/book-boxes`;
-      navigate(path);
+      // Navigate to the new Book Box page
+      path = `/book-boxes/${newBookBox.id}`;
+      navigate(path, { state: {bookBox: newBookBox } });
     }
   };
 
@@ -78,7 +77,7 @@ const BookBoxEdit = (props) => {
       <div>
         <h3>Loading...</h3>
       </div>
-    )
+    );
   }
 
   return (
@@ -90,9 +89,9 @@ const BookBoxEdit = (props) => {
             name="name"
             className="book-box__input"
             autoComplete="off"
-            required
             value={bookBox.name}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="book-box__input-group">
@@ -101,21 +100,14 @@ const BookBoxEdit = (props) => {
             name="address"
             className="book-box__input"
             autoComplete="off"
-            required
             value={bookBox.address}
             onChange={handleChange}
+            required
           />
         </div>
         <div className="book-box__button-group">
-          <button
-            type="button"
-            className="book-box__cancel-button"
-            onClick={handleCancel}
-          >Cancel</button>
-          <button
-            type="submit"
-            className="book-box__submit-button"
-          >Save</button>
+          <button type="button" className="book-box__cancel-button" onClick={handleCancel}>Cancel</button>
+          <button type="submit" className="book-box__submit-button">Save</button>
         </div>
       </form>
     </div>
