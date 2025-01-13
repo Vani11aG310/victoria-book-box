@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/books/Book.scss";
-import "../../styles/book-boxes/BookBoxList.scss";
+// import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import StateContext from "../../context/StateContext";
