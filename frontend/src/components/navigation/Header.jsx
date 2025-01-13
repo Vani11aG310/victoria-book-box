@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PiBooks } from "react-icons/pi";
 import StateContext from "../../context/StateContext";
+import logo from '../../logo/logo.png';
 
 const Header = () => {
   const state = useContext(StateContext);
@@ -21,7 +22,7 @@ const Header = () => {
       <span className="page-title" onClick={handleClick} >{pageTitle} </span>
       <span className="app-name">
         <Link to='/books' className="header-button">
-          <PiBooks className="header-icon" />
+          <img src={logo} alt="Logo" className="header-icon" />
         </Link>
       </span>
     </header>
