@@ -3,6 +3,7 @@ import "../../styles/books/Book.scss";
 // import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { PiBooks } from "react-icons/pi";
 import StateContext from "../../context/StateContext";
 import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
@@ -54,11 +55,12 @@ const Book = () => {
       <img src={bookDetails.cover_url} alt="book cover" className="book__cover" />
       {bookDetails.book_description ? <p>{bookDetails.book_description}</p> : <p>Book Summary Unavailable</p>}
       <h3>Book Available At:</h3>
-      <ul className="book__info-list ${collection && collection.length === 1 ? "single-item" : "multi-item"
-            }">
+      <ul className={`book__info-list ${collection && collection.length === 1 ? "single-item" : "multi-item"
+            }`}>
         {Array.isArray(collection) && collection.length > 0 ? collection.map((item) => (
-          <Link key={item.id} to={`/book-boxes/${!loading && item.book_box.id}`} state={{ bookBox: item.book_box}}>
+          <Link key={item.id} to={`/book-boxes/${item.book_box.id}`} state={{ bookBox: item.book_box}}>
               <li className="book-boxes__item">
+                <PiBooks className="book-boxes__icon" />
                 <div className="book-boxes__content">
                   <h4 className="book-boxes__name">{item.book_box.name}</h4>
                   <p className="book-boxes__address">{item.book_box.address}</p>
