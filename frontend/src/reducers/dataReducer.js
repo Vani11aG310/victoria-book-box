@@ -72,10 +72,19 @@ const dataReducer = (state, action) => {
       if (itemExists) {
         return state;
       }
+      
+      // Check if the book already exists in our global state.
+      // If not, we need to add it.
+      const bookExists = state.bookData.some((book) => book.id === newWishlistItem.book.id);
+      const bookData = [...state.bookData];
+      if (!bookExists) {        
+        bookData.push(newWishlistItem.book);
+      }
 
       // If the item does not exist, add it to the wishlist
       return {
         ...state,
+        bookData: bookData,
         wishlistData: [...state.wishlistData, newWishlistItem],
       };
     }

@@ -4,6 +4,8 @@ import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import StateContext from "../../context/StateContext";
+import DispatchContext from "../../context/DispatchContext";
+import usePageTitle from "../../hooks/usePageTitle";
 
 const Book = () => {
   const state = useContext(StateContext)
@@ -18,6 +20,9 @@ const Book = () => {
   const [bookDetails, setBookDetails] = useState();
 
   const [error, setError] = useState(null);
+  
+  const dispatch = useContext(DispatchContext);
+  usePageTitle("Books", dispatch);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/collections?book_id=${bookId}`)
