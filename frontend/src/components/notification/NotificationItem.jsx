@@ -16,7 +16,7 @@ const NotificationItem = (props) => {
 
   // Navigate to the Book Box page.
   const handleClick = () => {
-    const bookBoxId = notification.book_box_id
+    const bookBoxId = notification.collection.book_box_id
     const bookBox = state.bookBoxes.find((bookBox) => bookBox.id === bookBoxId);
 
     const path = `/book-boxes/${bookBox.id}`;

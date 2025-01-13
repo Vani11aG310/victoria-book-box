@@ -32,7 +32,15 @@ class Api::CollectionsController < ApplicationController
 
   # GET /collections/1
   def show
-    render json: @collection.as_json(include: { book: {}, book_box: {} })
+    render json: @collection.as_json(include: {
+      book_box: {}, 
+      book: {}
+      }).merge(
+        book: @collection.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{@collection.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{@collection.book.open_library_key}"
+        )
+      )
   end
 
   # POST /collections
@@ -115,23 +123,28 @@ class Api::CollectionsController < ApplicationController
 
   # Send Notifications to the users that have the Book on their Wishlist.
   def send_notification
-    book = Book.find(@collection[:book_id])
-    book_box = BookBox.find(@collection[:book_box_id])
+    collection = Collection.includes(:book, :book_box).find(@collection[:id])
+    collection_hash = collection.as_json(include: {
+      book_box: {}, 
+      book: {}
+      }).merge(
+        book: @collection.book.as_json.merge(
+          cover_url: "https://covers.openlibrary.org/b/olid/#{@collection.book.open_library_cover_key}-L.jpg",
+          open_library_url: "https://openlibrary.org#{@collection.book.open_library_key}"
+        )
+      )
 
     wishlists = Wishlist.where(book_id: @collection[:book_id])
 
     wishlists.each do |wishlist|
       channel = "notifications_#{wishlist.user_id}"
-      message = "#{book[:title]} is ready at the #{book_box[:name]} (#{book_box[:address]}) Book Box."
+      message = "#{collection_hash["book"]["title"]} is ready at the #{collection_hash["book_box"]["name"]} (#{collection_hash["book_box"]["address"]}) Book Box."
       ActionCable.server.broadcast(
         channel,
         {
         message: message,
         id: @collection[:id],
-        book_title: book[:title],
-        book_box_id: book_box[:id],
-        book_box_name: book_box[:name],
-        book_box_address: book_box[:address]
+        collection: collection_hash
         }
       )
     end
