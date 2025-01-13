@@ -5,6 +5,7 @@ import DispatchContext from "../../context/DispatchContext";
 import usePageTitle from "../../hooks/usePageTitle";
 import { Link } from 'react-router-dom';
 import { FaPlusCircle } from "react-icons/fa";
+import { PiBooks } from "react-icons/pi";
 
 
 const BookBoxList = () => {
@@ -45,6 +46,7 @@ const BookBoxList = () => {
           state.bookBoxes.map((bookBox) => (
             <Link to={`/book-boxes/${bookBox.id}`} state={{bookBox}}className="book-boxes__link" key={bookBox.id}>
               <li className="book-boxes__item">
+                  <PiBooks className="book-boxes__book-icon" />
                 <div className="book-boxes__content">
                   <span className="book-boxes__name">{bookBox.name}</span>
                   <p className="book-boxes__address">{bookBox.address}</p>

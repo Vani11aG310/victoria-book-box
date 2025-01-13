@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "../../styles/books/Book.scss";
-import "../../styles/book-boxes/BookBoxList.scss";
+// import "../../styles/book-boxes/BookBoxList.scss";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import StateContext from "../../context/StateContext";
@@ -25,6 +25,7 @@ const Book = () => {
   usePageTitle("Books", dispatch);
 
   useEffect(() => {
+    
     const retrieveBookCollections = axios.get(`http://localhost:3001/api/collections?book_id=${bookId}`)
     const retrieveBookDetails = axios.get(`http://localhost:3001/api/books/${bookId}`)
 
@@ -53,7 +54,8 @@ const Book = () => {
       <img src={bookDetails.cover_url} alt="book cover" className="book__cover" />
       {bookDetails.book_description ? <p>{bookDetails.book_description}</p> : <p>Book Summary Unavailable</p>}
       <h3>Book Available At:</h3>
-      <ul className="book__info-list">
+      <ul className="book__info-list ${collection && collection.length === 1 ? "single-item" : "multi-item"
+            }">
         {Array.isArray(collection) && collection.length > 0 ? collection.map((item) => (
           <Link key={item.id} to={`/book-boxes/${!loading && item.book_box.id}`} state={{ bookBox: item.book_box}}>
               <li className="book-boxes__item">

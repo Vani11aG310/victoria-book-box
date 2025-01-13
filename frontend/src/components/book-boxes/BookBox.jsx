@@ -39,16 +39,14 @@ const BookBox = () => {
           <FaPencilAlt className="book-box__edit-icon" onClick={handleEdit}/>
         </div>
       </div>
-      
+
       <ul className="book-box__collections">
-        {collectionForBookBox && 
+        {collectionForBookBox &&
           collectionForBookBox.map((collection) => {
             return <BookBoxItem key={collection.id} collection={collection} />
           })}
       </ul>
-
-
-      <Link to='/books/search' state={{ boxId: bookBox.id}}>
+      <Link to='/books/search' state={{ boxId: bookBox.id }}>
         <div className="book-box__fab">
           <FaPlusCircle className="book-box__add-icon" />
         </div>
