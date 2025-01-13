@@ -1,8 +1,22 @@
 .search-result {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: .25rem;
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 1040px) {
+  .search-result {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .search-result {
+    grid-template-columns: 1fr;
+  }
 }
