@@ -55,7 +55,7 @@ const Book = () => {
       <h3>Book Available At:</h3>
       <ul className="book__info-list">
         {Array.isArray(collection) && collection.length > 0 ? collection.map((item) => (
-          <Link key={item.id} to={`/book-boxes/${!loading && item.book_box.id}`} state={{ bookBox: item.book_box}}>
+          <Link key={item.id} to={`/book-boxes/${item.book_box.id}`} state={{ bookBox: item.book_box}}>
               <li className="book-boxes__item">
                 <div className="book-boxes__content">
                   <h4 className="book-boxes__name">{item.book_box.name}</h4>
