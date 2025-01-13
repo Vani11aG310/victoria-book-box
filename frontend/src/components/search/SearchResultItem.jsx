@@ -69,7 +69,7 @@ const SearchResultItem = (props) => {
   }
 
   return (
-    <div className="wishlist__item">
+    <div className="search-result__item">
       <img className="search-result__book-cover" src={book.cover_url} alt={`Cover picture of ${book.title}`} />
       <div className="search-result__book-info">
         <p className="search-result__book-title"><strong>{book.title}</strong></p>

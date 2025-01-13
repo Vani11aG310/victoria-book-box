@@ -1,12 +1,11 @@
 .search-result {
   display: grid;
-  flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: .25rem;
-  justify-content: space-between;
-  list-style-type: none;
   margin: 0;
+  width: 100%;
   padding: 0;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1040px) {
