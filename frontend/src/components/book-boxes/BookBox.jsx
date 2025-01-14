@@ -49,10 +49,12 @@ const BookBox = () => {
       </div>
 
       <ul className="book-box__collections">
-        {collectionForBookBox &&
+        {collectionForBookBox && Array.isArray(collectionForBookBox) && collectionForBookBox.length > 0 ?
           collectionForBookBox.map((collection) => {
             return <BookBoxItem key={collection.id} collection={collection} />
-          })}
+          })
+          : <h3>This Box currently does not have any Books. Use the + button below to add.</h3>
+        }
       </ul>
       <Link to='/books/search' state={{ boxId: bookBox.id }}>
         <div className="book-box__fab">
