@@ -9,7 +9,7 @@ import collectionDataCreate from "../../db/collections/collectionDataCreate";
 import { useNavigate } from "react-router-dom";
 
 const SearchResultItem = (props) => {
-  const { book, mode, boxId } = props;
+  const { book, mode, boxId, setSubmit } = props;
   book.cover_url = `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-L.jpg`;
 
   const navigate = useNavigate();
@@ -61,6 +61,7 @@ const SearchResultItem = (props) => {
     }, 
       dispatch
     );
+    setSubmit(true);
     setTimeout(() => routeChange(), 2000);
   }
 
