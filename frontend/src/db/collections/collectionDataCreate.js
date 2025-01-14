@@ -18,7 +18,6 @@ const collectionDataCreate = (collection, dispatch) => {
   .then((res) => {
       dispatch({
         type: ACTIONS.CREATE_BOOK,
-        book: res.data.book,
         collection: res.data
       });
     })
