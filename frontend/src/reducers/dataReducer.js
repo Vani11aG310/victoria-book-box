@@ -42,14 +42,22 @@ const dataReducer = (state, action) => {
     }
 
     case ACTIONS.CREATE_BOOK: {
-      const newBook = action.book;
       const newCollection = action.collection;
+      const newBook = action.collection.book;
+      const newBookBox = action.collection.book_box;
 
       // Check if the book already exists in the global state
       const bookExists = state.bookData.some((book) => book.id === newBook.id);
       const bookData = [...state.bookData];
       if (!bookExists) {        
         bookData.push(newBook);
+      }
+
+      // Check if the book box already exists in the global state
+      const bookBoxExists = state.bookBoxes.some((bookBox) => bookBox.id === newBookBox.id);
+      const bookBoxes = [...state.bookBoxes];
+      if (!bookBoxExists) {        
+        bookBoxes.push(newBookBox);
       }
 
       // Check if the collection already exists in the global state
@@ -62,6 +70,7 @@ const dataReducer = (state, action) => {
       return {
         ...state,
         bookData,
+        bookBoxes,
         collections,
       }
     }

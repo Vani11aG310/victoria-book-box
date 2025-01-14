@@ -24,7 +24,6 @@ const useNotificationsChannel = (userId, setNotifications, dispatch) => {
 
           dispatch({
             type: ACTIONS.CREATE_BOOK,
-            book: data.collection.book,
             collection: data.collection,
           });
 
