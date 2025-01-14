@@ -41,8 +41,10 @@ const BookList = () => {
             <FaSearch className="search__submit-icon" />
           </button>
       </form>
+
+      {bookList.length === 0 && <h3 className="search-result__status">No results found.</h3>}
       
-      {Array.isArray(bookList) && <ul className="booklist">
+      {bookList.length > 0 && Array.isArray(bookList) && <ul className="booklist">
         {bookList.map((book) => (
           (state.collections.find((collection) => collection.book_id === book.id) && <BooklistItem key={book.id} booklistItem={book} />)
         ))}
