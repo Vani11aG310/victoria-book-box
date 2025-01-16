@@ -1,24 +1,18 @@
-# README
+# Backend README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+1. `cd backend`
+2. Run `bundle install` to install dependencies
+3. Update `config.database.yml` with the database, username, and password
+4. Run `bin/rails db:reset` to create, load and seed the database
+5. Run `bin/rails server` to start the server
 
-* Ruby version
 
-* System dependencies
+## Dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- ruby 3.x
+- rails 7.x
+- pg 10x
+- rack-cors
+- faraday

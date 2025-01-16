@@ -30,32 +30,19 @@ For the purpose of our final project, we will assume contributers will add books
 - **Back End:** Ruby on Rails
 - **Database:** Postgresql
 
-### Decisions to Make
-- JavaScript~~vs TypeScript~~
-- React: CRA ~~vs Vite vs Next.js~~
-- ~~Bootstrap vs~~ Tailwind CSS vs Material UI
-- ~~Fetch vs~~ Axios ~~vs React Query~~
-- ~~React Router~~
-- ~~Formik~~
-
 ## Other Software
 
 ### Book API
 - [Open Library](https://openlibrary.org/developers/api)
-
-### Maps API
-- [Google Maps](https://developers.google.com/maps/)
 
 ### Project Planning
 - [Trello](https://trello.com/)
 
 ### Wireframe
 - [Balsamiq](https://balsamiq.cloud/)
-- [Figma](https://www.figma.com/)
 
 ### ERD
 - [Draw IO](https://app.diagrams.net/)
-- [DB Diagram](https://dbdiagram.io/home/)
 
 ### API Testing
 - [Postman](https://www.postman.com/)
