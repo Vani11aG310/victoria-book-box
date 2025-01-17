@@ -30,3 +30,27 @@ npm start
 ```
 
 3. Go to http://localhost:3000 in your browser.
+
+## Project Screens
+
+### Responsive Design
+
+#### Mobile
+
+![Mobile layout](https://github.com/Vani11aG310/victoria-book-box/blob/main/docs/mobile.png?raw=true)
+
+#### Desktop
+
+![Desktop layout](https://github.com/Vani11aG310/victoria-book-box/blob/main/docs/desktop.png?raw=true)
+
+### Book Details
+
+![Book Details Page](https://github.com/Vani11aG310/victoria-book-box/blob/main/docs/Book%20Details.png?raw=true)
+
+### Book Boxes
+
+![Book Boxes Page](https://github.com/Vani11aG310/victoria-book-box/blob/main/docs/book-boxes.png?raw=true)
+
+### Wishlist
+
+![Wishlist Page](https://github.com/Vani11aG310/victoria-book-box/blob/main/docs/wishlist.png?raw=true)
